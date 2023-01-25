@@ -18,3 +18,15 @@ body {
 	padding: 0 15px;
 	margin: 0 auto;
 }
+
+.header-link {
+	font-size: 26px;
+	color: $white;
+}
+
+.header-content {
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

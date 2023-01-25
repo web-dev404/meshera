@@ -1,86 +1,76 @@
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from "next/image";
+import Link from "next/link";
 
 const Home: NextPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+	return (
+		<div>
+			<Head>
+				<title>Мещера Туры</title>
+				<link rel="icon" href="/favicon.ico"/>
+			</Head>
+			
+			<header className={'h-screen w-screen relative'}>
+        <video className={'h-screen w-screen absolute -z-10 object-cover'} src="/bg-video.mp4" loop={true} autoPlay={true} muted={true}></video>
+				<nav className={'flex items-center justify-center gap-[30px] pt-[47px]'}>
+					<Link className={'header-link'} href="/">
+						Главная
+					</Link>
+					<Link className={'header-link'} href="/about">
+						Туры
+					</Link>
+					<Link className={'header-link'} href="/contact">
+						Баня
+					</Link>
+					<Link className={'mx-[10px]'} href={'/'}>
+						<Image width={'126'} height={'88'} src={'/img/logo.svg'} alt={'Мещера лого'}/>
+					</Link>
+				  <Link className={'header-link'} href={'blog'}>Блог</Link>
+				  <Link className={'header-link'} href={'faq'}>FAQ</Link>
+				  <Link className={'header-link'} href={'contact'}>Контакты</Link>
+				</nav>
+        
+        <div className={'header-content'}>
+          <h1>Мы провели десятки туров и корпоративов на различных акваториях.</h1>
+          <a className={'rounded-[35px] bg-white fz-[24px]'} href="#">Посмотреть туры</a>
         </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
-  )
+			</header>
+			
+			<div>
+				<p className={'max-w-[866px] text-[52px]'}>
+					Самые интересные локации Москвы, br
+					Подмосковья и не только;
+					Обучение основам управления сапбордом;
+					Аренду оборудования;
+					Скидки постоянным клиентам;
+					Сотрудничество с Event- агенствами;
+					Индивидуальные программы (корпоративы,
+					дни рождения и тд);
+					Помощь в выборе и покупке досок;
+				</p>
+			</div>
+			
+			<div className={'flex'}>
+				<div className={'statistics-item'}>
+					<p>20+</p>
+					<p>SUP-бордов</p>
+				</div>
+				<div className={'statistics-item'}>
+					<p>7</p>
+					<p>Туров</p>
+				</div>
+				<div className={'statistics-item'}>
+					<p>1200</p>
+					<p>Клиентов</p>
+				</div>
+				<div className={'statistics-item'}>
+					<p>42</p>
+					<p>Отзыва</p>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default Home
