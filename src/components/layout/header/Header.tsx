@@ -3,8 +3,9 @@ import Link from "next/link";
 
 const Header = () => {
 	return (
-		<header className={'h-screen w-screen relative'}>
-			<video className={'h-screen w-screen absolute -z-10 object-cover'} src="/bg-video.mp4" loop={true} autoPlay={true} muted={true}></video>
+		<header className={'h-screen w-full max-w-screen relative'}>
+			<video className={'h-screen w-full max-w-screen absolute -z-10 object-cover'} src="/bg-video.mp4" loop={true} autoPlay={true}
+			       muted={true}></video>
 			<nav className={'flex items-center justify-center gap-[30px] pt-[47px]'}>
 				<Link className={'header-link'} href="/">
 					Главная
@@ -24,8 +25,13 @@ const Header = () => {
 			</nav>
 			
 			<div className={'header-content'}>
-				<h1>Мы провели десятки туров и корпоративов на различных акваториях.</h1>
-				<a className={'rounded-[35px] bg-white fz-[24px]'} href="#">Посмотреть туры</a>
+				<h1 className={'h1 lt-spacing'}>Мы провели десятки туров и корпоративов на различных акваториях.</h1>
+				
+				<div className={'flex justify-center'}>
+					<a
+						className={'rounded-[35px] bg-white text-[24px] mt-[20px] w-[267px] h-[76px] flex items-center justify-center text-center'}
+						href="#">Посмотреть туры</a>
+				</div>
 			</div>
 		</header>
 	)
