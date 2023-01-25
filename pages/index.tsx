@@ -2,40 +2,17 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Image from "next/image";
 import Link from "next/link";
+import Layout from "../src/components/layout/Layout";
 
 const Home: NextPage = () => {
 	return (
-		<div>
+		<Layout title={'Главная'}>
 			<Head>
 				<title>Мещера Туры</title>
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 			
-			<header className={'h-screen w-screen relative'}>
-        <video className={'h-screen w-screen absolute -z-10 object-cover'} src="/bg-video.mp4" loop={true} autoPlay={true} muted={true}></video>
-				<nav className={'flex items-center justify-center gap-[30px] pt-[47px]'}>
-					<Link className={'header-link'} href="/">
-						Главная
-					</Link>
-					<Link className={'header-link'} href="/about">
-						Туры
-					</Link>
-					<Link className={'header-link'} href="/contact">
-						Баня
-					</Link>
-					<Link className={'mx-[10px]'} href={'/'}>
-						<Image width={'126'} height={'88'} src={'/img/logo.svg'} alt={'Мещера лого'}/>
-					</Link>
-				  <Link className={'header-link'} href={'blog'}>Блог</Link>
-				  <Link className={'header-link'} href={'faq'}>FAQ</Link>
-				  <Link className={'header-link'} href={'contact'}>Контакты</Link>
-				</nav>
-        
-        <div className={'header-content'}>
-          <h1>Мы провели десятки туров и корпоративов на различных акваториях.</h1>
-          <a className={'rounded-[35px] bg-white fz-[24px]'} href="#">Посмотреть туры</a>
-        </div>
-			</header>
+			
 			
 			<div>
 				<p className={'max-w-[866px] text-[52px]'}>
@@ -69,7 +46,7 @@ const Home: NextPage = () => {
 					<p>Отзыва</p>
 				</div>
 			</div>
-		</div>
+		</Layout>
 	)
 }
 
