@@ -3,6 +3,46 @@ import Head from 'next/head'
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "../src/components/layout/Layout";
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/css';
+
+const blog = [
+	{
+		id: 1,
+		title: "How to use Next.js",
+		date: "2020-01-01",
+		description: "Learn how to use Next.js",
+		image: "https://images.unsplash.com/photo-1661961110144-12ac85918e40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+	},
+	{
+		id: 2,
+		title: "How to use React",
+		date: "2020-01-01",
+		description: "How to use React",
+		image: "https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"
+	},
+	{
+		id: 3,
+		title: "HowLearn how to use Typescript",
+		date: "2020-01-01",
+		description: "Learn how to use Typescript",
+		image: "https://images.unsplash.com/photo-1584907797015-7554cd315667?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80"
+	},
+	{
+		id: 4,
+		title: "How to use tailwind",
+		date: "2020-01-01",
+		description: "How to use tailwind",
+		image: "https://images.unsplash.com/photo-1674364390022-059f9bacb9da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=484&q=80"
+	},
+	{
+		id: 5,
+		title: "How to use Js",
+		date: "2020-01-01",
+		description: "How to use Js",
+		image: "https://images.unsplash.com/photo-1643180109978-8b88bd13f568?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+	},
+]
 
 const Home: NextPage = () => {
 	return (
@@ -101,6 +141,26 @@ const Home: NextPage = () => {
 			
 			<section className={'w-full max-w-screen h-[600px] relative'}>
 				<Image className={'object-cover'} fill src={'/img/main-img2.jpg'} alt={'main banner'}/>
+			</section>
+			
+			<section>
+				<Swiper
+					spaceBetween={24}
+					slidesPerView={3}
+				>
+					{blog.map(item => (
+						<SwiperSlide key={item.id}>
+							<div className={'relative h-[368px]'}>
+								<Image className={'object-cover'} fill src={item.image} alt={'main banner'}/>
+							</div>
+							<h3>{item.title}</h3>
+							<div className={'flex items-center justify-between'}>
+								<p>блог / туризм</p>
+								<p>23 октября, 2022</p>
+							</div>
+						</SwiperSlide>
+					))}
+				</Swiper>
 			</section>
 		</Layout>
 	)
