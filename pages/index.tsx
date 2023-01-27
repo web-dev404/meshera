@@ -55,26 +55,32 @@ const Home: NextPage = () => {
 			</section>
 			
 			<section className={'grid grid-cols-3'}>
-				<div className={'tours-item relative h-[547px]'}>
+				<div className={'flex flex-col items-center justify-center relative h-[547px]'}>
 					<Image className={'object-cover -z-10'} fill src={'/img/main-img.jpg'} alt={'tour'}/>
-					<h3>Тур
+					<h3 className={'tour-title lt-spacing'}>Тур <br/>
 						“Новогодний”</h3>
-					<button>Участвовать</button>
+					<button className={'tour-btn lt-spacing'}>Участвовать</button>
 				</div>
 				
-				<div className={'tours-item relative h-[547px]'}>
+				<div className={'flex flex-col items-center justify-center relative h-[547px]'}>
 					<Image className={'object-cover -z-10'} fill src={'/img/main-img.jpg'} alt={'tour'}/>
-					<h3>Тур
+					<h3 className={'tour-title lt-spacing'}>Тур <br/>
 						“Новогодний”</h3>
-					<button>Участвовать</button>
+					<button className={'tour-btn lt-spacing'}>Участвовать</button>
 				</div>
 				
-				<div className={'tours-item relative h-[547px]'}>
+				<div className={'flex flex-col items-center justify-center relative h-[547px]'}>
 					<Image className={'object-cover -z-10'} fill src={'/img/main-img.jpg'} alt={'tour'}/>
-					<h3>Тур
+					<h3 className={'tour-title lt-spacing'}>Тур <br/>
 						“Зимние выходные”</h3>
-					<button>Участвовать</button>
+					<button className={'tour-btn lt-spacing'}>Участвовать</button>
 				</div>
+			</section>
+			
+			<section>
+				<h2>Здесь вы можете
+					ознакомиться со всеми
+					возможными турами</h2>
 			</section>
 		</Layout>
 	)

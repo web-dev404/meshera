@@ -1,0 +1,14 @@
+.tour-title {
+	font-size: 52px;
+	color: $white;
+	line-height: 91%;
+	text-align: center;
+	
+	&:first-letter {
+		font-family: 'DRUZHOK';
+	}
+}
+
+.tour-btn {
+	@apply bg-black text-white text-[24px] w-[184px] h-[78px] flex items-center justify-center mt-[20px];
+}

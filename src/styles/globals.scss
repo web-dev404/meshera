@@ -5,6 +5,8 @@
 @import "./fonts";
 @import './variables';
 
+@import './modules/tours';
+
 body {
 	background: $white;
 	color: $black;
