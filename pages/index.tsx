@@ -82,6 +82,22 @@ const Home: NextPage = () => {
 					ознакомиться со всеми
 					возможными турами</h2>
 			</section>
+			
+			<section className={'grid grid-cols-2'}>
+				<div className={'flex flex-col items-center justify-center relative h-[547px]'}>
+					<Image className={'object-cover -z-10'} fill src={'/img/houses/1.jpg'} alt={'house'}/>
+					<h3 className={'tour-title lt-spacing'}>Дом Лункино <br/>
+						(2+6 мест)</h3>
+					<button className={'tour-btn lt-spacing'}>Подробнее</button>
+				</div>
+				
+				<div className={'flex flex-col items-center justify-center relative h-[547px]'}>
+					<Image className={'object-cover -z-10'} fill src={'/img/houses/1.jpg'} alt={'house'}/>
+					<h3 className={'tour-title lt-spacing'}>Дом Лункино <br/>
+						4 места</h3>
+					<button className={'tour-btn lt-spacing'}>Подробнее</button>
+				</div>
+			</section>
 		</Layout>
 	)
 }
