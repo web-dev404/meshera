@@ -46,12 +46,35 @@ const Home: NextPage = () => {
 			</section>
 			
 			<section className={'w-full max-w-screen h-[600px] relative'}>
-				<Image className={'object-cover'} fill src={'/img/main-img.jpg'} alt={'main banner'} />
+				<Image className={'object-cover'} fill src={'/img/main-img.jpg'} alt={'main banner'}/>
 			</section>
 			
 			<section>
 				<h2>Мы провели десятки туров и корпоративов на различных акваториях.</h2>
 				<p>Москва-река, Большой Строгинский зат., Химкинское вдхр.</p>
+			</section>
+			
+			<section className={'grid grid-cols-3'}>
+				<div className={'tours-item relative h-[547px]'}>
+					<Image className={'object-cover -z-10'} fill src={'/img/main-img.jpg'} alt={'tour'}/>
+					<h3>Тур
+						“Новогодний”</h3>
+					<button>Участвовать</button>
+				</div>
+				
+				<div className={'tours-item relative h-[547px]'}>
+					<Image className={'object-cover -z-10'} fill src={'/img/main-img.jpg'} alt={'tour'}/>
+					<h3>Тур
+						“Новогодний”</h3>
+					<button>Участвовать</button>
+				</div>
+				
+				<div className={'tours-item relative h-[547px]'}>
+					<Image className={'object-cover -z-10'} fill src={'/img/main-img.jpg'} alt={'tour'}/>
+					<h3>Тур
+						“Зимние выходные”</h3>
+					<button>Участвовать</button>
+				</div>
 			</section>
 		</Layout>
 	)
