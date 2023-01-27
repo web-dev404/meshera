@@ -98,6 +98,10 @@ const Home: NextPage = () => {
 					<button className={'tour-btn lt-spacing'}>Подробнее</button>
 				</div>
 			</section>
+			
+			<section className={'w-full max-w-screen h-[600px] relative'}>
+				<Image className={'object-cover'} fill src={'/img/main-img2.jpg'} alt={'main banner'}/>
+			</section>
 		</Layout>
 	)
 }
