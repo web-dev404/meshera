@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 			
-			<div>
+			<div className={'mt-[51px]'}>
 				<p className={'max-w-[866px] text-[52px] mx-auto lt-spacing'}>
 					<span className={'opacity-40'}>Самые интересные локации</span> Москвы,
 					Подмосковья и не только; <br/>
@@ -43,6 +43,10 @@ const Home: NextPage = () => {
 					<p>42</p>
 					<p>Отзыва</p>
 				</div>
+			</div>
+			
+			<div className={'w-screen h-[600px] relative'}>
+				<Image className={'object-cover'} fill src={'/img/main-img.jpg'} alt={'main banner'} />
 			</div>
 		</Layout>
 	)
