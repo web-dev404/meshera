@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico"/>
 			</Head>
 			
-			<div className={'mt-[51px]'}>
+			<section className={'mt-[51px]'}>
 				<p className={'max-w-[866px] text-[52px] mx-auto lt-spacing'}>
 					<span className={'opacity-40'}>Самые интересные локации</span> Москвы,
 					Подмосковья и не только; <br/>
@@ -24,9 +24,9 @@ const Home: NextPage = () => {
 					дни рождения и тд); <br/>
 					Помощь в выборе и покупке досок;
 				</p>
-			</div>
+			</section>
 			
-			<div className={'flex'}>
+			<section className={'flex'}>
 				<div className={'statistics-item'}>
 					<p>20+</p>
 					<p>SUP-бордов</p>
@@ -43,11 +43,16 @@ const Home: NextPage = () => {
 					<p>42</p>
 					<p>Отзыва</p>
 				</div>
-			</div>
+			</section>
 			
-			<div className={'w-screen h-[600px] relative'}>
+			<section className={'w-full max-w-screen h-[600px] relative'}>
 				<Image className={'object-cover'} fill src={'/img/main-img.jpg'} alt={'main banner'} />
-			</div>
+			</section>
+			
+			<section>
+				<h2>Мы провели десятки туров и корпоративов на различных акваториях.</h2>
+				<p>Москва-река, Большой Строгинский зат., Химкинское вдхр.</p>
+			</section>
 		</Layout>
 	)
 }
