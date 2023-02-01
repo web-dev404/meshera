@@ -46,7 +46,7 @@ const Home: NextPageWithLayout = () => {
         <MainBlock />
         <Descriptions />
         <Adventages />
-        <Banner />
+        <Banner imageUrl="/img/banners/01.jpg" />
         <Boast />
         <Tours />
         <ListTours />

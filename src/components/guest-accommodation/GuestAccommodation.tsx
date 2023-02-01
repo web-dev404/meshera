@@ -13,7 +13,7 @@ interface IGuestAccommodation extends React.ComponentPropsWithoutRef<"section"> 
   listOfGuests: IGuest[];
 };
 
-export const GuestAccommodation: React.FC<IGuestAccommodation> = ({ className, title, description, listOfGuests }) => {
+export const GuestAccommodation: React.FC<any> = ({ className, title, description, listOfGuests }) => {
   return (
     <PrimarySection 
       title={title}
@@ -21,7 +21,7 @@ export const GuestAccommodation: React.FC<IGuestAccommodation> = ({ className, t
       className={clsx(styles.guest, className)}
     >
       {
-        listOfGuests.map(guest => (
+        listOfGuests.map((guest: any) => (
           <GuestAccomodationItem key={guest.id} {...guest} />
         ))
       }

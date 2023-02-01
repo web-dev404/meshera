@@ -13,13 +13,13 @@ interface IAdventages extends React.ComponentPropsWithoutRef<"section"> {
   listAdventageItems: IAdventageItem[];
 }
 
-export const Adventages: React.FC<IAdventages> = ({className, listAdventageItems}) => {
+export const Adventages: React.FC<any> = ({className, listAdventageItems}) => {
   return (
     <section className={clsx(styles.adventages, className)}>
       <div className={clsx(styles.adventages__container, "container")}>
         <div className={styles.adventages__body}>
           {
-            listAdventageItems.map(obj => (
+            listAdventageItems.map((obj: any) => (
               <div key={obj.id} className={styles.adventages__adventage}>
                 <h4 className={styles.adventages__title}>{obj.title}</h4>
                 <div className={styles.adventages__subtitle}>{obj.subtitle}</div>

@@ -8,7 +8,7 @@ interface IBoast extends React.ComponentPropsWithoutRef<"section"> {
   subtitle: string;
 };
 
-export const Boast: React.FC<IBoast> = ({ title, subtitle, className }) => {
+export const Boast: React.FC<any> = ({ title, subtitle, className }) => {
   return (
     <section className={clsx(styles.boast, className)}>
       <div className={clsx(styles.boast__container, "container")}>

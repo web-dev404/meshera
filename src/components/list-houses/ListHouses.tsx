@@ -18,13 +18,13 @@ interface IListHouses extends React.ComponentPropsWithoutRef<"section"> {
   listOfHouses: IHouse[],
 };
 
-export const ListHouses: React.FC<IListHouses> = ({ className, listOfHouses }) => {
+export const ListHouses: React.FC<any> = ({ className, listOfHouses }) => {
   return (
     <section className={clsx(styles.houses, className)}>
       <div className={clsx(styles.houses__container, "container")}>
         <div className={styles.houses__body}>
           {
-            listOfHouses.map(house => (
+            listOfHouses.map((house: any) => (
               <article key={house.id} className={styles.houses__house}>
                 <div className={styles.houses__content}>
                   <h4 className={styles.houses__title}>

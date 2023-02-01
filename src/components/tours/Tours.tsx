@@ -16,13 +16,13 @@ interface ITours extends React.ComponentPropsWithoutRef<"section"> {
   listTours: ITourItem[];
 };
 
-export const Tours: React.FC<ITours> = ({ className, listTours }) => {
+export const Tours: React.FC<any> = ({ className, listTours }) => {
   return (
     <section className={clsx(styles.tours, className)}>
       <div className={clsx(styles.tours__container, "container")}>
         <div className={styles.tours__body}>
           {
-            listTours.map(tour => (
+            listTours.map((tour: any) => (
               <article key={tour.id} className={styles.tours__tour}>
                 <Link href={tour.href} className={styles.tours__scope}>
                   <div className={styles.tours__content}>

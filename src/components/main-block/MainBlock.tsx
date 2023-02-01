@@ -15,7 +15,7 @@ export interface IMainBlock {
   };
 } 
 
-export const MainBlock: React.FC<IMainBlock> = ({title, href, buttonText, video, date}) => {
+export const MainBlock: React.FC<any> = ({title, href, buttonText, video, date}) => {
   return (
     <section className={styles.main}>
       <div className={clsx(styles.main__container, "container")}>

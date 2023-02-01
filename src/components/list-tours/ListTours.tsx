@@ -11,7 +11,7 @@ interface IListTours extends React.ComponentPropsWithoutRef<"section"> {
   listTours: IListItem[];
 };
 
-export const ListTours: React.FC<IListTours> = ({ className, title, listTours }) => {
+export const ListTours: React.FC<any> = ({ className, title, listTours }) => {
 
   return (
     <PrimarySection
@@ -19,7 +19,7 @@ export const ListTours: React.FC<IListTours> = ({ className, title, listTours })
       description="Нажмите на тур для ознакомления с подробностями"
     > 
       {
-        listTours.map(tour => (
+        listTours.map((tour: any) => (
           <ListTourItem {...tour} />
         ))
       }
