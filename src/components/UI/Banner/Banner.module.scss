@@ -1,0 +1,25 @@
+.banner {
+  padding-bottom: 25px;
+
+  &__image {
+    position: relative;
+    padding-bottom: 90%;
+
+
+    @media (min-width: 479.98px) {
+      padding-bottom: 50%;
+    }
+
+    @media (min-width: 767.98px) {
+      padding-bottom: 32%;
+    }
+
+    @media (min-width: 1280px) {
+      padding-bottom: 24%;
+    }
+
+    img {
+      object-fit: cover;
+    }
+  }
+}

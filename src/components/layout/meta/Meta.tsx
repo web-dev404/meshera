@@ -7,7 +7,7 @@ import { onlyText } from '../../../utils/clear-text'
 import { siteName, titleMerge } from './meta.config'
 import { ISeo } from './meta.interface'
 
-const Meta: FC<PropsWithChildren<ISeo>> = ({
+export const Meta: FC<PropsWithChildren<ISeo>> = ({
 	title,
 	description,
 	image = '/favicon-32x32.png',
@@ -56,6 +56,4 @@ const Meta: FC<PropsWithChildren<ISeo>> = ({
 			{children}
 		</>
 	)
-}
-
-export default Meta
+};
