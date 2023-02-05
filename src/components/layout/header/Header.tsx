@@ -11,7 +11,7 @@ export interface IHeader extends React.ComponentPropsWithoutRef<"header"> {
 }
 
 export const Header: React.FC<IHeader> = ({ className }) => {
-  const [isBodyLockStatus, setIsBodyLockStatus] = React.useState<boolean>(true);
+  const [isBodyLockStatus, setIsBodyLockStatus] = React.useState<boolean>(false);
   const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
   const { width } = useWindow();
 
