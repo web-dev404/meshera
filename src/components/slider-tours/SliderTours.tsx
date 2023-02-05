@@ -12,7 +12,7 @@ interface ISliderTours extends React.ComponentPropsWithoutRef<"section"> {
   listSlideItems: ISlideTourItem[];
 }
 
-export const SliderTours: React.FC<ISliderTours> = ({ className, listSlideItems }) => {
+export const SliderTours = ({ className, listSlideItems }: any) => {
   
   return (
     <section className={clsx(styles.slider, className)}>

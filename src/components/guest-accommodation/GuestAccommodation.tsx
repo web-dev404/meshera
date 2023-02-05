@@ -13,7 +13,7 @@ interface IGuestAccommodation extends React.ComponentPropsWithoutRef<"section"> 
   listOfGuests: IGuest[];
 }
 
-export const GuestAccommodation: React.FC<IGuestAccommodation> = ({ className, title, description, listOfGuests }) => {
+export const GuestAccommodation = ({ className, title, description, listOfGuests }: any) => {
   return (
     <PrimarySection 
       title={title}

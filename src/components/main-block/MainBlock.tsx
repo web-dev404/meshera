@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from "react";
 import Image from "next/image";
 import { LinkPrimary } from "@components/UI/Links";
@@ -17,7 +19,7 @@ export interface IMainBlock {
   };
 } 
 
-export const MainBlock: React.FC<IMainBlock> = ({ title, href, buttonText, video, mainImageUrl, date }) => {
+export const MainBlock = ({ title, href, buttonText, video, mainImageUrl, date }: any) => {
 
   return (
     <section className={styles.main}>

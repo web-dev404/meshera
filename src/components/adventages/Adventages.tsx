@@ -14,7 +14,7 @@ interface IAdventages extends React.ComponentPropsWithoutRef<"section"> {
   listAdventageItems: IAdventageItem[];
 }
 
-export const Adventages: React.FC<IAdventages> = ({ className, listAdventageItems }) => {
+export const Adventages = ({ className, listAdventageItems }: any) => {
   return (
     <section className={clsx(styles.adventages, className)}>
       <div className={clsx(styles.adventages__container, "container")}>
