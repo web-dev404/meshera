@@ -18,7 +18,7 @@ interface IListHouses extends React.ComponentPropsWithoutRef<"section"> {
   listOfHouses: IHouse[],
 }
 
-export const ListHouses = ({ className, listOfHouses }: any) => {
+export const ListHouses: React.FC<IListHouses> = ({ className, listOfHouses }) => {
   return (
     <section className={clsx(styles.houses, className)}>
       <div className={clsx(styles.houses__container, "container")}>

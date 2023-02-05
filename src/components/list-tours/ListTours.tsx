@@ -11,7 +11,7 @@ interface IListTours extends React.ComponentPropsWithoutRef<"section"> {
   listTours: IListItem[];
 }
 
-export const ListTours = ({ className, title, listTours }: any) => {
+export const ListTours: React.FC<IListTours> = ({ className, title, listTours }) => {
 
   return (
     <PrimarySection

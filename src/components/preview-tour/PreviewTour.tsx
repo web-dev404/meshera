@@ -12,7 +12,7 @@ interface IPreviewTour extends React.ComponentPropsWithoutRef<'section'> {
   listOfPreviewTours: IPreviewTourItem[];
 }
 
-export const PreviewTour = ({ title, description, className, listOfPreviewTours }: any) => {
+export const PreviewTour: React.FC<IPreviewTour> = ({ title, description, className, listOfPreviewTours }) => {
   return (
     <PrimarySection
       title={title}

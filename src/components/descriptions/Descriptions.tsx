@@ -13,12 +13,12 @@ interface IDescriptions extends React.ComponentPropsWithoutRef<"section"> {
   dataListDescriptions: IDescription[],
 }
 
-export const Descriptions = ({ className, dataListDescriptions }: any) => {
+export const Descriptions: React.FC<IDescriptions> = ({ className, dataListDescriptions }) => {
   return (
     <section className={clsx(styles.descriptions, className)}>
       <div className={clsx(styles.descriptions__container, "container")}>
           {
-            dataListDescriptions.map((obj: any) => {
+            dataListDescriptions.map((obj) => {
               return (
                 <article key={obj.id} className={clsx(styles.descriptions__item, { [styles.descriptions__item_min]: !obj.title })}>
                   <div className={styles.descriptions__titleBlock}>

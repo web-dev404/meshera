@@ -17,6 +17,24 @@ export const Header: React.FC<IHeader> = ({ className }) => {
 
   const isMobile = width ? width <= 767.98 : null;
 
+  const bodyLock = React.useCallback((delay = 500): void => {
+    const bodyElement = document.querySelector("body") as HTMLBodyElement;
+    const htmlElement = document.documentElement as HTMLHtmlElement;
+    const wrapperElement = document.querySelector(".wrapper") as HTMLDivElement;
+
+    if (isBodyLockStatus) {
+      bodyElement.style.paddingRight = window.innerWidth - wrapperElement.offsetWidth + "px";
+      htmlElement.classList.add("lock");
+  
+      // bodyLockStatus = false;
+      setIsBodyLockStatus(false);
+      setTimeout(function () {
+        // bodyLockStatus = true;
+        setIsBodyLockStatus(true);
+      }, delay);
+    }
+  }, [isBodyLockStatus]);
+
   const bodyUnlock = React.useCallback((delay = 500): void => {
     const bodyElement = document.querySelector("body") as HTMLBodyElement;
     const htmlElement = document.documentElement as HTMLHtmlElement;
@@ -35,24 +53,6 @@ export const Header: React.FC<IHeader> = ({ className }) => {
       }, delay);
     }
   }, [isBodyLockStatus]); 
-
-  const bodyLock = React.useCallback((delay = 500): void => {
-    const bodyElement = document.querySelector("body") as HTMLBodyElement;
-    const htmlElement = document.documentElement as HTMLHtmlElement;
-    const wrapperElement = document.querySelector(".wrapper") as HTMLDivElement;
-
-    if (isBodyLockStatus) {
-      bodyElement.style.paddingRight = window.innerWidth - wrapperElement.offsetWidth + "px";
-      htmlElement.classList.add("lock");
-  
-      // bodyLockStatus = false;
-      setIsBodyLockStatus(false);
-      setTimeout(function () {
-        // bodyLockStatus = true;
-        setIsBodyLockStatus(true);
-      }, delay);
-    }
-  }, [isBodyLockStatus]);
 
   const bodyLockToggle = React.useCallback((delay = 500) => {
     const htmlElement = document.documentElement as HTMLHtmlElement;
