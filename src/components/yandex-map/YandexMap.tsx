@@ -10,7 +10,7 @@ interface IYandexMap extends React.ComponentPropsWithoutRef<"section"> {
   geometry: [number, number]
 }
 
-export const YandexMap: React.FC<IYandexMap> = ({ className, centerCoord, zoom, geometry }) => {
+export const YandexMap = ({ className, centerCoord, zoom, geometry }: any) => {
   return (
     <section className={clsx(styles.map, className)}>
       <YMaps>

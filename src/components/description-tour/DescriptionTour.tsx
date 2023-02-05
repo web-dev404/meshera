@@ -15,13 +15,13 @@ interface IDescriptionTour extends React.ComponentPropsWithoutRef<"section"> {
   coord: [number, number]
 }
 
-export const DescriptionTour: React.FC<IDescriptionTour> = ({ className, title, listOfAdventages, text, backgroundImageUrl, coord }) => {
+export const DescriptionTour = ({ className, title, listOfAdventages, text, backgroundImageUrl, coord }: any) => {
   return (
     <section className={clsx(styles.description, className)}>
       <div className={styles.description__container}>
         <div className={styles.description__adventages}>
           {
-            listOfAdventages.map(obj => (
+            listOfAdventages.map((obj: any) => (
               <div key={obj.id} className={clsx(styles.description__adventage, "_icon-star-main")}>
                 <h5 className={styles.description__name}>{obj.name}</h5>
               </div>

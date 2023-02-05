@@ -8,7 +8,7 @@ interface IBanner extends React.ComponentPropsWithoutRef<"section"> {
   imageUrl: string;
 }
 
-export const Banner: React.FC<IBanner> = ({ imageUrl, className }) => {
+export const Banner = ({ imageUrl, className }: any) => {
   return (
     <section className={clsx(styles.banner, className)}>
       <div className={styles.banner__image}>
