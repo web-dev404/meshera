@@ -12,28 +12,28 @@ interface IHouse {
   title: string;
   href: string;
   imageUrl: string;
-};
+}
 
 interface IListHouses extends React.ComponentPropsWithoutRef<"section"> {
   listOfHouses: IHouse[],
-};
+}
 
-export const ListHouses: React.FC<any> = ({ className, listOfHouses }) => {
+export const ListHouses: React.FC<IListHouses> = ({ className, listOfHouses }) => {
   return (
     <section className={clsx(styles.houses, className)}>
       <div className={clsx(styles.houses__container, "container")}>
         <div className={styles.houses__body}>
           {
-            listOfHouses.map((house: any) => (
+            listOfHouses.map(house => (
               <article key={house.id} className={styles.houses__house}>
                 <div className={styles.houses__content}>
                   <h4 className={styles.houses__title}>
                     {house.title}
                   </h4>
-                  <LinkSecondary className={styles.houses__link} label="Подробнее" href={house.href} />
+                  <LinkSecondary className={styles.houses__link} label='Подробнее' href={house.href} />
                 </div>
                 <Link href={house.href} className={styles.houses__image}>
-                  <Image src={house.imageUrl} fill alt="Дом с мебелью" />
+                  <Image src={house.imageUrl} fill alt='Дом с мебелью' />
                 </Link>
               </article>
             ))
@@ -44,7 +44,7 @@ export const ListHouses: React.FC<any> = ({ className, listOfHouses }) => {
   )
 }
 
-ListHouses.defaultProps = {
+export const defaultProps = {
   listOfHouses: [
     {
       id: 0,
@@ -60,3 +60,5 @@ ListHouses.defaultProps = {
     }
   ],
 };
+
+ListHouses.defaultProps = defaultProps;

@@ -16,7 +16,7 @@ export interface IListItem {
   price: number;
   mapImageUrl: string;
   href: string;
-};
+}
 
 export const ListTourItem: React.FC<IListItem> = ({ title, stars, price, mapImageUrl, href, description }) => {
   const [isShow, setIsShow] = React.useState<boolean>(false);
@@ -29,21 +29,21 @@ export const ListTourItem: React.FC<IListItem> = ({ title, stars, price, mapImag
   };
   
   return (
-    <article className={clsx(styles.tours__tour, styles.tour, {[styles.tour_show]: isShow})}>
-      <button onClick={handleClickToShow} type="button" className={clsx(styles.tour__button, "_icon-angle-top")}>{title}</button>
+    <article className={clsx(styles.tours__tour, styles.tour, { [styles.tour_show]: isShow })}>
+      <button onClick={handleClickToShow} type='button' className={clsx(styles.tour__button, "_icon-angle-top")}>{title}</button>
       <div className={styles.tour__body}>
         <div className={styles.tour__meta}>
           <div className={styles.tour__rate}>
             {
               stars.map((isStar, _id) => (
-                <span key={_id} className={clsx(styles.tour__icon, {[styles.tour__icon_rated]: isStar}, "_icon-star-main")}></span>
+                <span key={_id} className={clsx(styles.tour__icon, { [styles.tour__icon_rated]: isStar }, "_icon-star-main")}></span>
               ))
             }
           </div>
           {
             isTablet ? (
               <div className={styles.tour__map}>
-                <Image src={mapImageUrl} fill alt="Карта тура" />
+                <Image src={mapImageUrl} fill alt='Карта тура' />
               </div>
             ) 
             :
@@ -57,7 +57,7 @@ export const ListTourItem: React.FC<IListItem> = ({ title, stars, price, mapImag
               {
                 !isTablet ? (
                   <div className={styles.tour__map}>
-                    <Image src={mapImageUrl} fill alt="Карта тура" />
+                    <Image src={mapImageUrl} fill alt='Карта тура' />
                   </div>
                 ) 
                 :

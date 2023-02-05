@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Wrapper: React.FC<React.PropsWithChildren> = ({children}) => {
+export const Wrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
 	return (
-    <div className="wrapper">
+    <div className='wrapper'>
       {children}
     </div>
 	)

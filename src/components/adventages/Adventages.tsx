@@ -5,7 +5,8 @@ import styles from "./Adventages.module.scss";
 
 interface IAdventageItem {
   id: number;
-  title: string | number;
+  title?: string | number;
+  stars?: [boolean, boolean, boolean];
   subtitle: string;
 }
 
@@ -13,15 +14,25 @@ interface IAdventages extends React.ComponentPropsWithoutRef<"section"> {
   listAdventageItems: IAdventageItem[];
 }
 
-export const Adventages: React.FC<any> = ({className, listAdventageItems}) => {
+export const Adventages: React.FC<IAdventages> = ({ className, listAdventageItems }) => {
   return (
     <section className={clsx(styles.adventages, className)}>
       <div className={clsx(styles.adventages__container, "container")}>
         <div className={styles.adventages__body}>
           {
-            listAdventageItems.map((obj: any) => (
+            listAdventageItems.map(obj => (
               <div key={obj.id} className={styles.adventages__adventage}>
-                <h4 className={styles.adventages__title}>{obj.title}</h4>
+                {obj.stars?.length ? 
+                  <div className={styles.adventages__stars}>
+                    {obj.stars.map((isStar, _id) => (
+                      <span key={_id} className={clsx(styles.adventages__star, { [styles.adventages__star_active]: isStar }, "_icon-star-main" )} />
+                    ))}
+                  </div>
+                  :
+                  <h4 className={styles.adventages__title}>
+                    {obj.title}
+                  </h4>
+                }
                 <div className={styles.adventages__subtitle}>{obj.subtitle}</div>
               </div>
             ))
@@ -32,7 +43,7 @@ export const Adventages: React.FC<any> = ({className, listAdventageItems}) => {
   )
 };
 
-Adventages.defaultProps = {
+export const defaultProps = {
   listAdventageItems: [
     {
       id: 0,
@@ -56,3 +67,5 @@ Adventages.defaultProps = {
     },
   ],
 };
+
+Adventages.defaultProps = defaultProps;

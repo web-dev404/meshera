@@ -11,9 +11,9 @@ interface IGuestAccommodation extends React.ComponentPropsWithoutRef<"section"> 
   title: string;
   description: string;
   listOfGuests: IGuest[];
-};
+}
 
-export const GuestAccommodation: React.FC<any> = ({ className, title, description, listOfGuests }) => {
+export const GuestAccommodation: React.FC<IGuestAccommodation> = ({ className, title, description, listOfGuests }) => {
   return (
     <PrimarySection 
       title={title}
@@ -21,7 +21,7 @@ export const GuestAccommodation: React.FC<any> = ({ className, title, descriptio
       className={clsx(styles.guest, className)}
     >
       {
-        listOfGuests.map((guest: any) => (
+        listOfGuests.map(guest => (
           <GuestAccomodationItem key={guest.id} {...guest} />
         ))
       }
@@ -29,7 +29,7 @@ export const GuestAccommodation: React.FC<any> = ({ className, title, descriptio
   )
 }
 
-GuestAccommodation.defaultProps = {
+export const defaultProps = {
   title: "Размещение гостей",
   description: "Нажмите на  вариант размещения для ознакомления с подробностями",
   listOfGuests: [
@@ -149,3 +149,5 @@ GuestAccommodation.defaultProps = {
     },
   ],
 };
+
+GuestAccommodation.defaultProps = defaultProps;

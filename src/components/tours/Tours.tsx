@@ -14,23 +14,23 @@ interface ITourItem {
 
 interface ITours extends React.ComponentPropsWithoutRef<"section"> {
   listTours: ITourItem[];
-};
+}
 
-export const Tours: React.FC<any> = ({ className, listTours }) => {
+export const Tours: React.FC<ITours> = ({ className, listTours }) => {
   return (
     <section className={clsx(styles.tours, className)}>
       <div className={clsx(styles.tours__container, "container")}>
         <div className={styles.tours__body}>
           {
-            listTours.map((tour: any) => (
+            listTours.map(tour => (
               <article key={tour.id} className={styles.tours__tour}>
                 <Link href={tour.href} className={styles.tours__scope}>
                   <div className={styles.tours__content}>
                     <h4 className={styles.tours__title}>{tour.title}</h4>
-                    <button type="button" className={styles.tours__link}>Участвовать</button>
+                    <button type='button' className={styles.tours__link}>Участвовать</button>
                   </div>
                   <div className={styles.tours__image}>
-                    <Image src={tour.imageUrl} fill alt="Dandelion in the field" />
+                    <Image src={tour.imageUrl} fill alt='Dandelion in the field' />
                   </div>
                 </Link>
               </article>
@@ -42,7 +42,7 @@ export const Tours: React.FC<any> = ({ className, listTours }) => {
   )
 }
 
-Tours.defaultProps = {
+export const defaultProps = {
   listTours: [
     {
       id: 0,
@@ -64,3 +64,5 @@ Tours.defaultProps = {
     },
   ]
 };
+
+Tours.defaultProps = defaultProps;

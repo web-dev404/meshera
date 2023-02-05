@@ -13,14 +13,14 @@ interface IDescriptions extends React.ComponentPropsWithoutRef<"section"> {
   dataListDescriptions: IDescription[],
 }
 
-export const Descriptions: React.FC<any> = ({className, dataListDescriptions}) => {
+export const Descriptions: React.FC<IDescriptions> = ({ className, dataListDescriptions }) => {
   return (
     <section className={clsx(styles.descriptions, className)}>
       <div className={clsx(styles.descriptions__container, "container")}>
           {
-            dataListDescriptions.map((obj: any) => {
+            dataListDescriptions.map((obj) => {
               return (
-                <article key={obj.id} className={clsx(styles.descriptions__item, {[styles.descriptions__item_min]: !obj.title})}>
+                <article key={obj.id} className={clsx(styles.descriptions__item, { [styles.descriptions__item_min]: !obj.title })}>
                   <div className={styles.descriptions__titleBlock}>
                     {
                       obj.title ? 
@@ -30,7 +30,7 @@ export const Descriptions: React.FC<any> = ({className, dataListDescriptions}) =
                     }
                   </div>
                   <div className={styles.descriptions__text}>
-                    <p className="text">
+                    <p className='text'>
                       {obj.text}
                     </p>
                   </div>
@@ -44,7 +44,7 @@ export const Descriptions: React.FC<any> = ({className, dataListDescriptions}) =
   )
 }
 
-Descriptions.defaultProps = {
+export const defaultProps = {
   dataListDescriptions: [
     {
       id: 0,
@@ -63,4 +63,6 @@ Descriptions.defaultProps = {
             
     }
   ],
-};
+}
+
+Descriptions.defaultProps = defaultProps;

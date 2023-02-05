@@ -7,61 +7,68 @@ import { useWindow } from "@hooks/useWindow";
 
 import styles from "./Header.module.scss";
 
-export interface IHeader extends React.ComponentPropsWithoutRef<"header"> {}
+export interface IHeader extends React.ComponentPropsWithoutRef<"header"> {
+}
 
-export const Header: React.FC<IHeader> = ({className}) => {
+export const Header: React.FC<IHeader> = ({ className }) => {
+  const [isBodyLockStatus, setIsBodyLockStatus] = React.useState<boolean>(true);
   const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
   const { width } = useWindow();
 
   const isMobile = width ? width <= 767.98 : null;
-  
-  const handleMenuClick = () => {
-    setIsOpenMenu((prev) => !prev);
-  };
 
-  React.useEffect(() => {
+  const bodyUnlock = React.useCallback((delay = 500): void => {
+    const bodyElement = document.querySelector("body") as HTMLBodyElement;
+    const htmlElement = document.documentElement as HTMLHtmlElement;
+
+    if (isBodyLockStatus) {
+      setTimeout(() => {
+        bodyElement.style.paddingRight = "0px";
+        htmlElement.classList.remove("lock");
+      }, delay);
+
+      // bodyLockStatus = false;
+      setIsBodyLockStatus(false);
+      setTimeout(function () {
+        // bodyLockStatus = true;
+        setIsBodyLockStatus(true);
+      }, delay);
+    }
+  }, [isBodyLockStatus]); 
+
+  const bodyLock = React.useCallback((delay = 500): void => {
     const bodyElement = document.querySelector("body") as HTMLBodyElement;
     const htmlElement = document.documentElement as HTMLHtmlElement;
     const wrapperElement = document.querySelector(".wrapper") as HTMLDivElement;
-    let bodyLockStatus: boolean = true;
 
-    const bodyUnlock = (delay = 500): void => {
-      if (bodyLockStatus) {
-        setTimeout(() => {
-          bodyElement.style.paddingRight = "0px";
-          htmlElement.classList.remove("lock");
-        }, delay);
-
-        bodyLockStatus = false;
-        setTimeout(function () {
-          bodyLockStatus = true;
-        }, delay);
-      }
-    }; 
-
-    const bodyLock = (delay = 500): void => {
-      if (bodyLockStatus) {
-        bodyElement.style.paddingRight = window.innerWidth - wrapperElement.offsetWidth + "px";
-        htmlElement.classList.add("lock");
-    
-        bodyLockStatus = false;
-        setTimeout(function () {
-          bodyLockStatus = true;
-        }, delay);
-      }
-    };
-
-    const bodyLockToggle = (delay = 500) => {
-      if (htmlElement.classList.contains("lock")) {
-        bodyUnlock(delay);
-      } else {
-        bodyLock(delay);
-      }
+    if (isBodyLockStatus) {
+      bodyElement.style.paddingRight = window.innerWidth - wrapperElement.offsetWidth + "px";
+      htmlElement.classList.add("lock");
+  
+      // bodyLockStatus = false;
+      setIsBodyLockStatus(false);
+      setTimeout(function () {
+        // bodyLockStatus = true;
+        setIsBodyLockStatus(true);
+      }, delay);
     }
+  }, [isBodyLockStatus]);
 
-    if (bodyLockStatus) {
+  const bodyLockToggle = React.useCallback((delay = 500) => {
+    const htmlElement = document.documentElement as HTMLHtmlElement;
+
+    if (htmlElement.classList.contains("lock")) {
+      bodyUnlock(delay);
+    } else {
+      bodyLock(delay);
+    }
+  }, [isBodyLockStatus]);
+
+  React.useEffect(() => {
+    const htmlElement = document.documentElement as HTMLHtmlElement;
+    if (isBodyLockStatus) {
       bodyLockToggle();
-      htmlElement.classList.toggle("menu-open");
+      htmlElement.classList.toggle("menu-open", isOpenMenu);
     }
   }, [isOpenMenu]);
 
@@ -83,74 +90,77 @@ export const Header: React.FC<IHeader> = ({className}) => {
     };
   }, [])
 
+  const handleMenuClick = () => setIsOpenMenu((prev) => !prev);
+
   return (
 		<header className={clsx(styles.header, className)}>
-			<div className={clsx(styles.header__container, "container")}>
-        <nav className={clsx(styles.header__menu, styles.menu)}>
-          <div className={styles.menu__body}>
-            {isMobile || (
-              <ul className={styles.menu__list}>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Главная</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Туры</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Баня</Link>
-                </li>
-              </ul>
-            )}
-            <Link href="/" className={styles.menu__logo}>
-              <Image 
-                src={"/img/logo.svg"}
-                alt="Логотип Мещера Тур"
-                fill
-              />
-            </Link>
-            {isMobile || (
-              <ul className={clsx(styles.menu__list, styles.menu__list_left)}>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Главная</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Туры</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Баня</Link>
-                </li>
-              </ul>
-            )}
-          </div>
-          {isMobile && (
-            <div className={styles.menu__nav}>
-              <ul className={styles.menu__list}>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Главная</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Туры</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Баня</Link>
-                </li>
-              </ul>
-              <ul className={clsx(styles.menu__list, styles.menu__list_left)}>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Главная</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Туры</Link>
-                </li>
-                <li className={styles.menu__item}>
-                  <Link href="/" className={styles.menu__link}>Баня</Link>
-                </li>
-              </ul>
+      <div className={clsx(styles.header__wrapper)}>
+        <div className={clsx(styles.header__container, "container")}>
+          <nav className={clsx(styles.header__menu, styles.menu)}>
+            <div className={styles.menu__body}>
+              {isMobile || (
+                <ul className={styles.menu__list}>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Главная</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Туры</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Баня</Link>
+                  </li>
+                </ul>
+              )}
+              <Link href='/' className={styles.menu__logo}>
+                <Image 
+                  src={"/img/logo.svg"}
+                  alt='Логотип Мещера Тур'
+                  fill
+                />
+              </Link>
+              {isMobile || (
+                <ul className={clsx(styles.menu__list, styles.menu__list_left)}>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Главная</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Туры</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Баня</Link>
+                  </li>
+                </ul>
+              )}
             </div>
-          )}
-          
-          <button onClick={handleMenuClick} type="button" className={clsx(styles.menu__button, styles.iconMenu)}></button>
-        </nav>
+            {isMobile && (
+              <div className={styles.menu__nav}>
+                <ul className={styles.menu__list}>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Главная</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Туры</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Баня</Link>
+                  </li>
+                </ul>
+                <ul className={clsx(styles.menu__list, styles.menu__list_left)}>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Главная</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Туры</Link>
+                  </li>
+                  <li className={styles.menu__item}>
+                    <Link href='/' className={styles.menu__link}>Баня</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+            <button onClick={handleMenuClick} type='button' className={clsx(styles.menu__button, styles.iconMenu)}></button>
+          </nav>
+        </div>
       </div>
 		</header>
 	)

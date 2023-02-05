@@ -2,11 +2,9 @@
 
 .guest {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   column-gap: 10px;
-  row-gap: 15px;
-
+  row-gap: 5px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 
   &:last-child {
@@ -14,6 +12,14 @@
   }
 
   @media (min-width: 767.98px) {
+    row-gap: 15px;
+    padding: 20px 0px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1280px) {
     padding: 25px 0px;
   }
 
@@ -24,14 +30,53 @@
   &_show {}
 
   &__actions {
-    flex: 0 1 445px;
+    position: relative;
+    flex: 1 1 auto;
+
+    @media (min-width: 767.98px) {
+      flex: 0 1 190px;
+    }
+
+    @media (min-width: 1280px) {
+      flex: 0 1 345px;
+    }
+
+    @media (min-width: 1875px) {
+      flex: 0 1 445px;
+    }
   }
 
   &__button {
     line-height: math.div(28, 26);
     letter-spacing: -0.035em;
-    font-size: 20px;
+    position: relative;
     text-align: start;
+    z-index: 2;
+    font-size: 16px;
+
+    .guest_show & {
+      &::before {
+        transform: rotate(-180deg);
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      padding: 20px 0px;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      &::before {
+        font-size: 11px;
+
+      }
+    }
+
+    @media (min-width: 374.98px) {
+      font-size: 20px;
+    }
 
     @media (min-width: 767.98px) {
       font-size: 16px;
@@ -48,29 +93,95 @@
     @media (any-hover: hover) {
       &:hover {
         text-decoration: underline;
+
+        +.guest__image {
+          transform: scale(1) translateY(-50%);
+        }
       }
     }
   }
 
   &__image {
-    position: relative;
+    @media (max-width: 475.98px) {
+      position: relative;
+      padding-bottom: 95%;
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (min-width: 767.98px) {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 70%;
+      min-width: 190px;
+      min-height: 220px;
+      transition: transform 0.3s ease 0s;
+      transform: scale(0) translateY(-50%);
+
+      img {
+        object-fit: cover;
+        min-width: 190px;
+        min-height: 220px;
+      }
+    }
   }
 
   &__body {
     flex: 1 1 auto;
+    display: none;
+
+    @media (max-width: 767.98px) {
+      .guest_show & {
+        display: block;
+      }
+    }
+
+    @media (min-width: 767.98px) {
+      display: block;
+    }
+  }
+
+  &__content {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 10px;
+
+    @media (max-width: 767.98px) {
+      column-gap: 10px;
+      row-gap: 12px;
+      padding-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (min-width: 767.98px) {
+      justify-content: flex-end;
+      align-items: center;
+      row-gap: 12px;
+      column-gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (min-width: 1280px) {
+      column-gap: 15px;
+    }
   }
 
   &__item {
     display: inline-flex;
     align-items: center;
 
+    @media (max-width: 767.98px) {
+      gap: 10px;
+    }
+
+    @media (min-width: 767.98px) {
+      column-gap: 10px;
+    }
+
     @media (min-width: 1280px) {
-      column-gap: 15px;
+      column-gap: 12px;
     }
 
     @media (min-width: 1875px) {
@@ -85,12 +196,32 @@
     align-items: center;
     overflow: hidden;
     border-radius: 50%;
-    font-size: 45px;
     color: #000;
 
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+    font-size: 26px;
+
+    @media (min-width: 767.98px) {
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      font-size: 26px;
+    }
+
+    @media (min-width: 1280px) {
+      flex: 0 0 23px;
+      width: 23px;
+      height: 23px;
+      font-size: 31px;
+    }
+
     @media (min-width: 1875px) {
+      flex: 0 0 35px;
       width: 35px;
       height: 35px;
+      font-size: 45px;
     }
 
     &_available {
@@ -105,6 +236,7 @@
     letter-spacing: -0.035em;
     color: #000000;
     opacity: 0.5;
+    font-size: 14px;
 
     @media (min-width: 767.98px) {
       font-size: 16px;

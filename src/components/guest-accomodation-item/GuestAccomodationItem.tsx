@@ -36,22 +36,39 @@ export const GuestAccomodationItem:
   };
 
   return (
-    <article className={clsx(styles.guest, className, {[styles.guest_show]: isShow})}>
+    <article className={clsx(styles.guest, className, { [styles.guest_show]: isShow })}>
       <div className={styles.guest__actions}>
-        <button onClick={handleClickShowButton} type="button" className={clsx(styles.guest__button, "_icon-angle-top")}>
+        <button onClick={handleClickShowButton} type='button' className={clsx(styles.guest__button, "_icon-angle-top")}>
           {title}
-          <Link href={href} className={styles.guest__image}>
-            <Image src={mapImageUrl} fill alt="Карта тура" />
-          </Link>
         </button>
+        {
+          !isMobile ? (
+            <Link href={href} className={styles.guest__image}>
+              <Image src={mapImageUrl} fill alt='Карта тура' />
+            </Link>
+          )
+          :
+          null
+          }
       </div>
       <div className={styles.guest__body}>
-        {placementList.map(guest => (
-          <div key={guest.id} className={styles.guest__item}>
-            <span className={clsx(styles.guest__icon, {[styles.guest__icon_available]: guest.availability}, "_icon-star-main")}></span>
-            <div className={styles.guest__name}>{guest.name}</div>
-          </div>
-        ))}
+        {
+          isMobile ? (
+            <Link href={href} className={styles.guest__image}>
+              <Image src={mapImageUrl} fill alt='Карта тура' />
+            </Link>
+          )
+          :
+          null
+        }
+        <div className={styles.guest__content}>
+          {placementList.map(guest => (
+            <div key={guest.id} className={styles.guest__item}>
+              <span className={clsx(styles.guest__icon, { [styles.guest__icon_available]: guest.availability }, "_icon-star-main")}></span>
+              <div className={styles.guest__name}>{guest.name}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </article>
   )

@@ -12,7 +12,7 @@ export const Banner: React.FC<IBanner> = ({ imageUrl, className }) => {
   return (
     <section className={clsx(styles.banner, className)}>
       <div className={styles.banner__image}>
-        <Image src={imageUrl} fill alt="Lake with forest" />
+        <Image src={imageUrl} fill alt='Lake with forest' />
       </div>
     </section>
   )

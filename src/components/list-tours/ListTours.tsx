@@ -9,25 +9,25 @@ import styles from "./ListTours.module.scss";
 interface IListTours extends React.ComponentPropsWithoutRef<"section"> {
   title: string;
   listTours: IListItem[];
-};
+}
 
-export const ListTours: React.FC<any> = ({ className, title, listTours }) => {
+export const ListTours: React.FC<IListTours> = ({ className, title, listTours }) => {
 
   return (
     <PrimarySection
       title={title}
-      description="Нажмите на тур для ознакомления с подробностями"
+      description='Нажмите на тур для ознакомления с подробностями'
     > 
       {
-        listTours.map((tour: any) => (
-          <ListTourItem {...tour} />
+        listTours.map(tour => (
+          <ListTourItem key={tour.id} {...tour} />
         ))
       }
     </PrimarySection>
   )
 }
 
-ListTours.defaultProps = {
+export const defaultProps = {
   title: "Здесь вы можете ознакомиться со всеми возможными турами",
   listTours: [
     {
@@ -77,3 +77,5 @@ ListTours.defaultProps = {
     },
   ]
 };
+
+ListTours.defaultProps = defaultProps;

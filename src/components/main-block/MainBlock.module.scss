@@ -28,8 +28,10 @@
     }
   }
 
-  &__video {
-    video {
+  &__meta {
+
+    video,
+    img {
       position: absolute;
       top: 0;
       left: 0;
