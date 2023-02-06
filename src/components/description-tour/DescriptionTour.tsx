@@ -15,7 +15,7 @@ interface IDescriptionTour extends React.ComponentPropsWithoutRef<"section"> {
   coord: [number, number]
 }
 
-export const DescriptionTour = ({ className, title, listOfAdventages, text, backgroundImageUrl, coord }: any) => {
+export const DescriptionTour: React.FC<IDescriptionTour> = ({ className, title, listOfAdventages, text, backgroundImageUrl, coord }) => {
   return (
     <section className={clsx(styles.description, className)}>
       <div className={styles.description__container}>
@@ -78,6 +78,6 @@ const defaultProps: IDescriptionTour = {
   coord: [55.194870, 40.166803]
 };
 
-DescriptionTour.defaultProps = defaultProps;
+export default defaultProps;
 
-export default DescriptionTour;
+DescriptionTour.defaultProps = defaultProps;

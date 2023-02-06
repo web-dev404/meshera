@@ -11,65 +11,61 @@ export interface IHeader extends React.ComponentPropsWithoutRef<"header"> {
 }
 
 export const Header: React.FC<IHeader> = ({ className }) => {
-  const [isBodyLockStatus, setIsBodyLockStatus] = React.useState<boolean>(false);
+  const [isBodyLockStatus, setIsBodyLockStatus] = React.useState<boolean>(true);
   const [isOpenMenu, setIsOpenMenu] = React.useState<boolean>(false);
   const { width } = useWindow();
 
   const isMobile = width ? width <= 767.98 : null;
 
-  const bodyLock = React.useCallback((delay = 500): void => {
+  const bodyUnlock = (delay = 500): void => {
+    const bodyElement = document.querySelector("body") as HTMLBodyElement;
+    const htmlElement = document.documentElement as HTMLHtmlElement;
+
+    if (isOpenMenu || isBodyLockStatus) {
+      setTimeout(() => {
+        bodyElement.style.paddingRight = "0px";
+        htmlElement.classList.toggle("lock", isOpenMenu);
+      }, delay);
+
+      setIsBodyLockStatus(false);
+      setTimeout(function () {
+        console.log("bodyUnlock");
+        setIsBodyLockStatus(true);
+      }, delay);
+    }
+  }; 
+
+  const bodyLock = (delay = 500): void => {
     const bodyElement = document.querySelector("body") as HTMLBodyElement;
     const htmlElement = document.documentElement as HTMLHtmlElement;
     const wrapperElement = document.querySelector(".wrapper") as HTMLDivElement;
 
-    if (isBodyLockStatus) {
+    if (isOpenMenu || isBodyLockStatus) {
       bodyElement.style.paddingRight = window.innerWidth - wrapperElement.offsetWidth + "px";
-      htmlElement.classList.add("lock");
+      htmlElement.classList.toggle("lock", isOpenMenu);
   
-      // bodyLockStatus = false;
       setIsBodyLockStatus(false);
       setTimeout(function () {
-        // bodyLockStatus = true;
+        console.log("bodyLock");
         setIsBodyLockStatus(true);
       }, delay);
     }
-  }, [isBodyLockStatus]);
+  };
 
-  const bodyUnlock = React.useCallback((delay = 500): void => {
-    const bodyElement = document.querySelector("body") as HTMLBodyElement;
+  const bodyLockToggle = (delay = 500) => {
     const htmlElement = document.documentElement as HTMLHtmlElement;
 
-    if (isBodyLockStatus) {
-      setTimeout(() => {
-        bodyElement.style.paddingRight = "0px";
-        htmlElement.classList.remove("lock");
-      }, delay);
-
-      // bodyLockStatus = false;
-      setIsBodyLockStatus(false);
-      setTimeout(function () {
-        // bodyLockStatus = true;
-        setIsBodyLockStatus(true);
-      }, delay);
-    }
-  }, [isBodyLockStatus]); 
-
-  const bodyLockToggle = React.useCallback((delay = 500) => {
-    const htmlElement = document.documentElement as HTMLHtmlElement;
-
-    if (htmlElement.classList.contains("lock")) {
+    if (!htmlElement.classList.contains("lock")) {
       bodyUnlock(delay);
     } else {
       bodyLock(delay);
     }
-  }, [isBodyLockStatus]);
+  };
 
   React.useEffect(() => {
     const htmlElement = document.documentElement as HTMLHtmlElement;
-    if (isBodyLockStatus) {
-      bodyLockToggle();
-      htmlElement.classList.toggle("menu-open", isOpenMenu);
-    }
+    bodyLockToggle();
+    htmlElement.classList.toggle("menu-open", isOpenMenu);
   }, [isOpenMenu]);
 
   React.useEffect(() => {

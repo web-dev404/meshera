@@ -13,7 +13,7 @@ interface IGuestAccommodation extends React.ComponentPropsWithoutRef<"section"> 
   listOfGuests: IGuest[];
 }
 
-export const GuestAccommodation = ({ className, title, description, listOfGuests }: any) => {
+export const GuestAccommodation: React.FC<IGuestAccommodation> = ({ className, title, description, listOfGuests }) => {
   return (
     <PrimarySection 
       title={title}
@@ -29,7 +29,7 @@ export const GuestAccommodation = ({ className, title, description, listOfGuests
   )
 }
 
-export const defaultProps = {
+const defaultProps = {
   title: "Размещение гостей",
   description: "Нажмите на  вариант размещения для ознакомления с подробностями",
   listOfGuests: [
@@ -149,5 +149,7 @@ export const defaultProps = {
     },
   ],
 };
+
+export default defaultProps;
 
 GuestAccommodation.defaultProps = defaultProps;

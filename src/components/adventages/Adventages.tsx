@@ -14,7 +14,7 @@ interface IAdventages extends React.ComponentPropsWithoutRef<"section"> {
   listAdventageItems: IAdventageItem[];
 }
 
-export const Adventages = ({ className, listAdventageItems }: any) => {
+export const Adventages: React.FC<IAdventages> = ({ className, listAdventageItems }) => {
   return (
     <section className={clsx(styles.adventages, className)}>
       <div className={clsx(styles.adventages__container, "container")}>
@@ -43,7 +43,7 @@ export const Adventages = ({ className, listAdventageItems }: any) => {
   )
 };
 
-export const defaultProps = {
+const defaultProps = {
   listAdventageItems: [
     {
       id: 0,
@@ -67,5 +67,7 @@ export const defaultProps = {
     },
   ],
 };
+
+export default defaultProps;
 
 Adventages.defaultProps = defaultProps;

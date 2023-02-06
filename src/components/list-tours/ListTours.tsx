@@ -11,7 +11,7 @@ interface IListTours extends React.ComponentPropsWithoutRef<"section"> {
   listTours: IListItem[];
 }
 
-export const ListTours = ({ className, title, listTours }: any) => {
+export const ListTours: React.FC<IListTours> = ({ className, title, listTours }) => {
 
   return (
     <PrimarySection
@@ -27,7 +27,7 @@ export const ListTours = ({ className, title, listTours }: any) => {
   )
 }
 
-export const defaultProps = {
+const defaultProps: IListTours = {
   title: "Здесь вы можете ознакомиться со всеми возможными турами",
   listTours: [
     {
@@ -77,5 +77,7 @@ export const defaultProps = {
     },
   ]
 };
+
+export default defaultProps;
 
 ListTours.defaultProps = defaultProps;

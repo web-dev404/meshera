@@ -16,7 +16,7 @@ interface ITours extends React.ComponentPropsWithoutRef<"section"> {
   listTours: ITourItem[];
 }
 
-export const Tours = ({ className, listTours }: any) => {
+export const Tours: React.FC<ITours> = ({ className, listTours }) => {
   return (
     <section className={clsx(styles.tours, className)}>
       <div className={clsx(styles.tours__container, "container")}>
@@ -42,7 +42,7 @@ export const Tours = ({ className, listTours }: any) => {
   )
 }
 
-export const defaultProps = {
+const defaultProps = {
   listTours: [
     {
       id: 0,
@@ -64,5 +64,7 @@ export const defaultProps = {
     },
   ]
 };
+
+export default defaultProps;
 
 Tours.defaultProps = defaultProps;

@@ -1,18 +1,43 @@
 import React from "react";
 import clsx from "clsx";
 
+import { IOneTourItem, OneTourItem } from "@components/one-tour-item/OneTourItem";
+
 import styles from "./OneTour.module.scss";
 
-const OneTour = () => {
+interface IOneTour extends React.ComponentPropsWithoutRef<"section"> {
+  listOfTours: IOneTourItem[];
+}
+
+export const OneTour: React.FC<IOneTour> = ({ className, listOfTours }) => {
   return (
-    <section className={styles.onetour}>
-      <div className={styles.onetour__container}>
+    <section className={clsx(styles.onetour, className)}>
+      <div className={clsx(styles.onetour__container, "container")}>
         <div className={styles.onetour__body}>
-          
+          {
+            listOfTours.map(tour => (
+              <OneTourItem key={tour.id} {...tour} />
+            ))
+          }
         </div>
       </div>
     </section>
   )
 }
 
-export default OneTour
+const defaultProps: IOneTour = {
+  listOfTours: [
+    {
+      id: 0,
+      title: "Тур “Новогодний”",
+      stars: [true, true, false],
+      description: "Озеро Великое, озеро Белое, Мещерский национальной парк, деревни Лункино, Корякино, Чесноково.",
+      href: "/", 
+      times: ["3.01-5.01", "7.01-9.01"]
+    }
+  ]
+};
+
+export default defaultProps;
+
+OneTour.defaultProps = defaultProps;

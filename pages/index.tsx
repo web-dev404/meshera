@@ -1,18 +1,18 @@
 import Head from "next/head";
 
 import { Footer, Header, Wrapper } from "@components/layout";
-import { MainBlock }  from "@components/main-block/MainBlock";
-import { Descriptions } from "@components/descriptions/Descriptions";
-import { Banner } from "@components/UI/Banner/Banner";
-import { Adventages } from "@components/adventages/Adventages";
-import { Boast } from "@components/boast/Boast";
-import { Tours } from "@components/tours/Tours";
-import { ListTours } from "@components/list-tours/ListTours";
-import { ListHouses } from "@components/list-houses/ListHouses";
-import { GuestAccommodation } from "@components/guest-accommodation/GuestAccommodation";
-import { PreviewTour } from "@components/preview-tour/PreviewTour";
-import { SliderTours } from "@components/slider-tours/SliderTours";
-import { YandexMap } from "@components/yandex-map/YandexMap";
+import mainBlockProps, { MainBlock }  from "@components/main-block/MainBlock";
+import descriptionsProps, { Descriptions } from "@components/descriptions/Descriptions";
+import bannerProps, { Banner } from "@components/UI/Banner/Banner";
+import adventagesProps, { Adventages } from "@components/adventages/Adventages";
+import boastProps, { Boast } from "@components/boast/Boast";
+import toursProps, { Tours } from "@components/tours/Tours";
+import listToursProps, { ListTours } from "@components/list-tours/ListTours";
+import listHousesProps, { ListHouses } from "@components/list-houses/ListHouses";
+import guestAccommodationProps, { GuestAccommodation } from "@components/guest-accommodation/GuestAccommodation";
+import previewTourProps, { PreviewTour } from "@components/preview-tour/PreviewTour";
+import sliderToursProps, { SliderTours } from "@components/slider-tours/SliderTours";
+import yandexMapProps, { YandexMap } from "@components/yandex-map/YandexMap";
 
 import { NextPageWithLayout } from "./page";
 
@@ -24,19 +24,49 @@ const Home: NextPageWithLayout = () => {
 				<link rel='icon' href='/favicon.ico'/>
 			</Head>
       <main className='page'>
-        <MainBlock video='/video/01.mp4' title='Мы провели десятки туров и корпоративов на различных акваториях.' />
-        <Descriptions />
-        <Adventages />
-        <Banner imageUrl='/img/banners/01.jpg' />
-        <Boast />
-        <Tours />
-        <ListTours />
-        <ListHouses />
-        <GuestAccommodation />
-        <Banner imageUrl='/img/banners/02.jpg' />
-        <PreviewTour />
-        <SliderTours />
-        <YandexMap />
+        <MainBlock 
+          {...mainBlockProps}
+          video='/video/01.mp4'
+          title='Мы провели десятки туров и корпоративов на различных акваториях.' 
+        />
+        <Descriptions 
+          {...descriptionsProps}
+        />
+        <Adventages 
+          {...adventagesProps} 
+        />
+        <Banner 
+          {...bannerProps}
+          imageUrl='/img/banners/01.jpg'
+        />
+        <Boast 
+          {...boastProps}
+        />
+        <Tours 
+          {...toursProps}
+        />
+        <ListTours 
+          {...listToursProps}
+        />
+        <ListHouses 
+          {...listHousesProps}
+        />
+        <GuestAccommodation 
+          {...guestAccommodationProps}
+        />
+        <Banner 
+          {...bannerProps}
+          imageUrl='/img/banners/02.jpg'
+        />
+        <PreviewTour 
+          {...previewTourProps}
+        />
+        <SliderTours 
+          {...sliderToursProps}
+        />
+        <YandexMap 
+          {...yandexMapProps}
+        />
       </main>
 		</>
 	)

@@ -11,6 +11,12 @@
     padding: 40px 0px;
   }
 
+  &_noTopMargin {
+    @media (max-width: 767.98px) {
+      padding: 0px 0px 25px 0px;
+    }
+  }
+
   &__container {}
 
   &__item {
