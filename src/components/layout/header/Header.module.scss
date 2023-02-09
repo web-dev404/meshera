@@ -20,12 +20,14 @@
       height: 140px;
       transition: height 0.3s ease 0s;
 
+      height: 90px;
+
       .header_scroll & {
-        height: 120px;
+        height: 75px;
       }
 
-      @media (min-width: 1280px) {
-        height: 180px;
+      @media (min-width: 767.98px) {
+        height: 130px;
 
         .header_scroll & {
           height: 130px;
@@ -33,7 +35,7 @@
       }
 
       @media (min-width: 1875px) {
-        height: 275px;
+        height: 260px;
 
         .header_scroll & {
           height: 200px;
@@ -61,7 +63,13 @@
 
     .header__wrapper {
       &::before {
-        background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.77) 40.63%, rgba(0, 0, 0, 0) 100%);
+        background-color: rgba(0, 0, 0, 0.65);
+      }
+
+      @media (min-width: 1875px) {
+        &::before {
+          background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.77) 40.63%, rgba(0, 0, 0, 0) 100%);
+        }
       }
     }
   }

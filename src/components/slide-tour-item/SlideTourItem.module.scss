@@ -57,21 +57,24 @@
   &__title {
     line-height: math.div(44, 42);
     letter-spacing: -0.035em;
-
-    @media (max-width: 991.98px) {
-      font-size: 34px;
-    }
-
-    @media (max-width: 374.98px) {
-      font-size: 28px;
-    }
+    font-size: 23px;
 
     &:not(:last-child) {
       padding-bottom: 10px;
       margin-bottom: 10px;
     }
 
+    @media (min-width: 374.98px) {
+      font-size: 28px;
+    }
+
+    @media (min-width: 991.98px) {
+      font-size: 34px;
+    }
+
     @media (min-width: 1280px) {
+      font-size: 35px;
+
       &:not(:last-child) {
         padding-bottom: 15px;
         margin-bottom: 15px;

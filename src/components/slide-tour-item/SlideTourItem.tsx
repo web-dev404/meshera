@@ -4,8 +4,6 @@ import Image from "next/image";
 import clsx from "clsx";
 
 import styles from "./SlideTourItem.module.scss";
-import { useSwiperSlide } from "swiper/react";
-
 export interface ISlideTourItem {
   id: number;
   title: string;
@@ -17,7 +15,6 @@ export interface ISlideTourItem {
 }
 
 const SlideTourItem: React.FC<ISlideTourItem> = ({ title, typeSlide, typeTrip, date, imageUrl, href }) => {
-  const swiperSlide = useSwiperSlide();
 
   const formatDate = new Intl.DateTimeFormat("ru", {
     day: "2-digit",

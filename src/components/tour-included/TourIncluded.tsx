@@ -1,75 +1,106 @@
-import React from "react";
-import clsx from "clsx";
-import htmlToReact from "html-react-parser";
+import clsx from 'clsx'
+import htmlToReact from 'html-react-parser'
+import React from 'react'
 
-import { useWindow } from "@hooks/useWindow";
+import { useWindow } from '@hooks/useWindow'
 
-import styles from "./TourIncluded.module.scss";
+import styles from './TourIncluded.module.scss'
 
-interface ITourIncude {
-  id: number;
-  title: string;
-  text: string;
+interface ITourInclude {
+  id: number
+  title: string
+  text: string
 }
 
-interface ITourIncluded extends React.ComponentPropsWithoutRef<"section"> {
-  title: string;
-  listOfTourInfos: ITourIncude[];
-} 
+interface ITourIncluded
+  extends React.ComponentPropsWithoutRef<'section'> {
+  title: string
+  isProduct?: boolean
+  listOfTourInfos: ITourInclude[]
+}
 
-export const TourIncluded: React.FC<ITourIncluded> = ({ className, listOfTourInfos, title }) => {
-  const [isShowInfo, setIsShowInfo] = React.useState<boolean>(true);
+export const TourIncluded: React.FC<ITourIncluded> = ({
+  className,
+  listOfTourInfos,
+  title,
+  isProduct,
+}) => {
+  const [isShowInfo, setIsShowInfo] = React.useState<boolean>(true)
 
-  const { width } = useWindow();
+  const { width } = useWindow()
 
   const isMobile = width ? width < 767.98 : null
 
-  const handleClickShowInfo = () => setIsShowInfo(show => !show);
+  const handleClickShowInfo = () => setIsShowInfo(show => !show)
 
   return (
-    <section className={clsx(styles.include, className, { [styles.include_show]: isShowInfo })}>
+    <section
+      className={clsx(styles.include, className, {
+        [styles.include_show]: isShowInfo,
+      })}
+    >
       <div className={clsx(styles.include__header, styles.header)}>
-        <div className={clsx(styles.header__container, "container")}>
+        <div className={clsx(styles.header__container, 'container')}>
           <div className={styles.header__body}>
-            <h2 className={clsx(styles.header__title, "first-letter-fonts")}>
+            <h2
+              className={clsx(
+                styles.header__title,
+                'first-letter-fonts'
+              )}
+            >
               {title}
             </h2>
-            {
-              !isMobile ? (
-                <button onClick={handleClickShowInfo} type='button' className={styles.header__show}>
-                  <div className={styles.header__label}>РЕКОМЕНДУЕМ ВЗЯТЬ</div>
-                  <span className={clsx(styles.header__icon, "_icon-angle-top")} />
-                </button>
-              )
-              : null
-            }
+            {!isMobile ? (
+              <button
+                onClick={handleClickShowInfo}
+                type='button'
+                className={styles.header__show}
+              >
+                <div className={styles.header__label}>
+                  РЕКОМЕНДУЕМ ВЗЯТЬ
+                </div>
+                <span
+                  className={clsx(
+                    styles.header__icon,
+                    '_icon-angle-top'
+                  )}
+                />
+              </button>
+            ) : null}
           </div>
         </div>
-        {
-          isMobile ? (
-            <button onClick={handleClickShowInfo} type='button' className={styles.header__show}>
-              <div className={styles.header__label}>РЕКОМЕНДУЕМ ВЗЯТЬ ЧТО ВКЛЮЧЕНО</div>
-              <span className={clsx(styles.header__icon, "_icon-angle-top")} />
-            </button>
-          )
-          : null
-        }
+        {isMobile ? (
+          <button
+            onClick={handleClickShowInfo}
+            type='button'
+            className={styles.header__show}
+          >
+            <div className={styles.header__label}>
+              РЕКОМЕНДУЕМ ВЗЯТЬ ЧТО ВКЛЮЧЕНО
+            </div>
+            <span
+              className={clsx(styles.header__icon, '_icon-angle-top')}
+            />
+          </button>
+        ) : null}
       </div>
       <div className={styles.include__body}>
-        <div className={clsx(styles.include__container, "container")}>
-          <div className={styles.include__content}>
-            {
-              listOfTourInfos.map(tour => (
-                <article key={tour.id} className={styles.include__item}>
-                  <h4 className={styles.include__title}>{tour.title}</h4>
-                  <div className={styles.include__text}>
-                    <p>
-                      {htmlToReact(tour.text)}
-                    </p>
-                  </div>
-                </article>
-              ))
-            }
+        <div className={clsx(styles.include__container, 'container')}>
+          <div
+            className={clsx(styles.include__content, {
+              [styles.include__content_full]: isProduct,
+            })}
+          >
+            {listOfTourInfos.map(tour => (
+              <article key={tour.id} className={styles.include__item}>
+                <h4 className={styles.include__title}>
+                  {tour.title}
+                </h4>
+                <div className={styles.include__text}>
+                  <p>{htmlToReact(tour.text)}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
@@ -78,11 +109,11 @@ export const TourIncluded: React.FC<ITourIncluded> = ({ className, listOfTourInf
 }
 
 const defaultProps: ITourIncluded = {
-  title: "Тур “Новогодний” Информация",
+  title: 'Тур “Новогодний” Информация',
   listOfTourInfos: [
     {
       id: 0,
-      title: "РЕКОМЕНДУЕМ ВЗЯТЬ",
+      title: 'РЕКОМЕНДУЕМ ВЗЯТЬ',
       text: `
         одежда по погоде (желательно соблюдение принципа слоёв - термобелье, слой флиса, куртки и штаны с ветрозащитой, жилетки) 
         варежки или лыжные перчатки, запасные носки
@@ -94,8 +125,8 @@ const defaultProps: ITourIncluded = {
       `,
     },
     {
-      id: 0,
-      title: "ЧТО ВКЛЮЧЕНО",
+      id: 1,
+      title: 'ЧТО ВКЛЮЧЕНО',
       text: `
         Проживание (2 ночи);
         Услуги инструкторов;
@@ -108,10 +139,10 @@ const defaultProps: ITourIncluded = {
         Билет в нацпарк;
         Страховка. 
       `,
-    }
-  ]
-};
+    },
+  ],
+}
 
-export default defaultProps;
+export default defaultProps
 
-TourIncluded.defaultProps = defaultProps;
+TourIncluded.defaultProps = defaultProps

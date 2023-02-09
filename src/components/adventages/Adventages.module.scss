@@ -194,6 +194,7 @@
     flex: 0 0 25px;
     height: 25px;
     font-size: 30px;
+    opacity: 0.4;
 
     @media (min-width: 374.98px) {
       flex: 0 0 30px;
@@ -213,7 +214,10 @@
       font-size: 75px;
     }
 
-    &_active {}
+    &_active {
+      opacity: 1;
+      background-color: #F3D102;
+    }
   }
 
   &__subtitle {

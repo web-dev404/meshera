@@ -30,6 +30,9 @@
       padding-bottom: 0px;
       min-height: 100vh;
     }
+  }
 
+  &_noBottomMargin {
+    padding-bottom: 0px;
   }
 }

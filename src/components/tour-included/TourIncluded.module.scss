@@ -66,12 +66,14 @@
 
   &__content {
     margin: 0px 0px 0px auto;
-    max-width: 865px;
     display: grid;
     justify-content: space-between;
     row-gap: 20px;
-
     grid-template-columns: 1fr;
+
+    &:not(&_full) {
+      max-width: 865px;
+    }
 
     @media (min-width: 767.98px) {
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -81,11 +83,24 @@
     @media (min-width: 1875px) {
       column-gap: 25px;
       grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
-      max-width: 1275px;
+
+      &:not(&_full) {
+        max-width: 1275px;
+      }
     }
+
   }
 
-  &__item {}
+  &__item {
+    &:first-child {
+      opacity: 0.6;
+    }
+    &:not(.include__content_full &) {
+      &:first-child {
+        opacity: 1;
+      }
+    }
+  }
 
   &__title {
     text-transform: uppercase;

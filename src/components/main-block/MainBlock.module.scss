@@ -8,7 +8,6 @@
   }
 
   &__body {
-    min-height: 100vh;
     position: relative;
     display: grid;
     grid-auto-flow: row;
@@ -17,14 +16,31 @@
     padding-top: 100px;
     padding-bottom: 40px;
 
+    &:not(&_min) {
+        min-height: 100vh;
+    }
+
+    &_min {
+      padding-bottom: 80px;
+    }
+
     @media (min-width: 767.98px) {
       padding-top: 130px + 10px;
       padding-bottom: 33px;
+
+      &_min {
+        padding-bottom: 150px;
+      }
     }
 
     @media (min-width: 1875px) {
       padding-top: 180px + 10px;
       padding-bottom: 25px;
+
+      &_min {
+        padding-top: 220px;
+        padding-bottom: 190px;
+      }
     }
   }
 

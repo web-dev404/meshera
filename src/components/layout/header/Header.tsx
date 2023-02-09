@@ -29,7 +29,6 @@ export const Header: React.FC<IHeader> = ({ className }) => {
 
       setIsBodyLockStatus(false);
       setTimeout(function () {
-        console.log("bodyUnlock");
         setIsBodyLockStatus(true);
       }, delay);
     }
@@ -46,7 +45,6 @@ export const Header: React.FC<IHeader> = ({ className }) => {
   
       setIsBodyLockStatus(false);
       setTimeout(function () {
-        console.log("bodyLock");
         setIsBodyLockStatus(true);
       }, delay);
     }
