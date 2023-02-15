@@ -14,21 +14,17 @@
   &__container {}
 
   &__header {
-    max-width: 1295px;
-    margin-left: auto;
+    &:not(&_big) {
+      max-width: 1295px;
+      margin-left: auto;
+    }
+
     display: grid;
     align-items: flex-end;
     justify-content: space-between;
     grid-auto-flow: column;
     grid-template-columns: 1fr auto;
     gap: 15px;
-
-    &_big {
-      & .section__title {
-        max-width: 1020px;
-
-      }
-    }
 
     &:not(:last-child) {
       margin-bottom: 30px;
@@ -37,6 +33,19 @@
 
   &__title {
     max-width: 630px;
+    line-height: math.div(55, 60);
+
+    .section__header_big & {
+      @media (min-width: 991.98px) {
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 1875px) {
+        max-width: 1020px;
+      }
+
+    }
 
     span {
       opacity: 0.4;

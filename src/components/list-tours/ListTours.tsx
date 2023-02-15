@@ -28,7 +28,7 @@ export const ListTours: React.FC<IListTours> = ({ className, title, listTours })
 }
 
 const defaultProps: IListTours = {
-  title: "Здесь вы можете ознакомиться со всеми возможными турами",
+  title: "Здесь вы можете ознакомиться со&nbsp;всеми возможными турами",
   listTours: [
     {
       id: 0,

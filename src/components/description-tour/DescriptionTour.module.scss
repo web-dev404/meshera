@@ -89,7 +89,7 @@
 
   &__title {
     align-self: flex-end;
-    line-height: math.div(82, 80);
+    line-height: math.div(73, 80);
     text-align: center;
     letter-spacing: -0.035em;
     font-size: 26px;
@@ -139,7 +139,7 @@
     max-width: 685px;
     margin: 0 auto;
     line-height: math.div(28, 26);
-    color: rgba(255, 255, 255, 0.5);
+    color: #fff;
 
     @media (max-width: 479.98px) {
       font-size: 20px;
@@ -151,7 +151,10 @@
 
     @media (min-width: 767.98px) {
       align-self: flex-end;
-      color: #fff;
+    }
+
+    @media (min-width: 1280px) {
+      color: rgba(255, 255, 255, 0.5);
     }
   }
 
@@ -160,14 +163,14 @@
     max-width: 685px;
     line-height: math.div(28, 26);
     margin: 0 auto;
-    color: rgba(255, 255, 255, 0.5);
+    color: #fff;
 
     @media (max-width: 479.98px) {
       font-size: 20px;
     }
 
-    @media (min-width: 767.98px) {
-      color: #fff;
+    @media (min-width: 1280px) {
+      color: rgba(255, 255, 255, 0.5);
     }
   }
 

@@ -74,7 +74,7 @@ const defaultProps: IDescriptionTour = {
   ],
   title: "Проведите новогодние выходные активно — прогулки на лыжах, снегоступах и простой сказочно-лесной трекинг",
   text: "Озеро Белое, Озеро Великое, Мещерский национальной парк, деревни Лункино, Корякино, Чесноково.",
-  backgroundImageUrl: "/img/adventages/01.jpg",
+  backgroundImageUrl: "/img/adventages/01.png",
   coord: [55.194870, 40.166803]
 };
 

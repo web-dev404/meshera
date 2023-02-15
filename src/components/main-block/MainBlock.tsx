@@ -43,7 +43,7 @@ export const MainBlock: React.FC<IMainBlock> = ({
               <LinkPrimary
                 href={href}
                 label={buttonText}
-                className={styles.link}
+                className={styles.main__link}
               />
             ) : null}
           </div>

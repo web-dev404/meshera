@@ -140,14 +140,16 @@
     line-height: math.div(95, 90);
 
     &:not(:last-child) {
-      margin-bottom: 3px;
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 374.98px) {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
     }
 
     @media (min-width: 767.98px) {
-      &:not(:last-child) {
-        margin-bottom: 5px;
-      }
-
       font-size: 32px;
     }
 
@@ -158,6 +160,9 @@
     @media (min-width: 1875px) {
       font-size: 90px;
 
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
     }
   }
 

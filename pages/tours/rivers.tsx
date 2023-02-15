@@ -72,7 +72,7 @@ const Rivers: NextPageWithLayout = () => {
             },
           ]}
           title='Душевно поплескаться можно даже в сердце мегаполиса!'
-          backgroundImageUrl='/img/adventages/03.jpg'
+          backgroundImageUrl='/img/adventages/03.png'
           text='Озеро Великое, озеро Белое, Мещерский национальной парк, деревни Лункино, Корякино, Чесноково.'
           coord={[55.19487, 40.166803]}
         />

@@ -23,14 +23,14 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: 1875px) {
+    @media (min-width: 1279.98px) {
       grid-template-columns: repeat(3, 1fr);
       column-gap: 25px;
     }
   }
 
   &__tour {
-    @media (max-width: 1875px) {
+    @media (max-width: 1279.98px) {
       &:last-child {
         display: none;
       }
@@ -130,8 +130,11 @@
       padding-bottom: 59%;
     }
 
-    @media (min-width: 1875px) {
+    @media (min-width: 1280px) {
       padding-bottom: 100%;
+    }
+
+    @media (min-width: 1875px) {
       transition: transform 0.8s ease 0s;
     }
 

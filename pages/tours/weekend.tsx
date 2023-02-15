@@ -72,7 +72,7 @@ const Weekend: NextPageWithLayout = () => {
             },
           ]}
           title='Зимние выходные на природе — это всегда вызов! Мы поможем провести их ярко, активно и безопасно'
-          backgroundImageUrl='/img/adventages/02.jpg'
+          backgroundImageUrl='/img/adventages/02.png'
           text='Озеро Белое, Озеро Великое, Мещерский национальной парк, деревни Лункино, Корякино, Чесноково.'
           coord={[55.19487, 40.166803]}
         />
