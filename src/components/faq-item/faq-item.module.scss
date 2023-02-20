@@ -32,6 +32,7 @@
 
     &::before {
       font-size: 20px;
+      transition: transform 0.4s ease 0s;
     }
 
     .faq_show &::before {
@@ -64,6 +65,10 @@
           text-decoration: underline;
         }
       }
+    }
+
+    &+div {
+      transition: height 0.4s ease 0s;
     }
   }
 
@@ -103,5 +108,8 @@
       }
     }
 
+    &_collapse {}
+
+    &_content {}
   }
 }

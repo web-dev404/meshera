@@ -1,7 +1,8 @@
-import clsx from 'clsx'
 import React from 'react'
+import clsx from 'clsx'
 
 import styles from './faq-item.module.scss'
+import { Collapse } from 'react-collapse'
 
 export interface IFAQItem
   extends React.ComponentPropsWithoutRef<'section'> {
@@ -13,7 +14,7 @@ export interface IFAQItem
 
 export const FAQItem: React.FC<IFAQItem> = ({
   className,
-  isShow = true,
+  isShow = false,
   name,
   texts,
 }) => {
@@ -21,10 +22,15 @@ export const FAQItem: React.FC<IFAQItem> = ({
 
   const handleClickShow = () => setIsShowFAQ(prev => !prev)
 
+  const collapseClasses = React.useMemo(() => ({
+    collapse: styles.faq__hidden_collapsing,
+    content: styles.faq__hidden,
+  }), []);
+
   return (
     <article
       className={clsx(styles.faq, className, {
-        [styles.faq_show]: !isShowFAQ,
+        [styles.faq_show]: isShowFAQ,
       })}
     >
       <button
@@ -34,11 +40,11 @@ export const FAQItem: React.FC<IFAQItem> = ({
       >
         <span>{name}</span>
       </button>
-      <div className={styles.faq__hidden} hidden={isShowFAQ}>
+      <Collapse className={styles.faq__hidden} theme={collapseClasses} isOpened={isShowFAQ}>
         {texts.map((text, _id) => (
           <p key={_id}>{text}</p>
         ))}
-      </div>
+      </Collapse>
     </article>
   )
 }

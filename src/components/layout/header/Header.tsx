@@ -67,14 +67,21 @@ export const Header: React.FC<IHeader> = ({ className }) => {
   }, [isOpenMenu]);
 
   React.useEffect(() => {
+    let prevScrollpos = window.scrollY;
+    const headerElement = document.querySelector("header") as HTMLDivElement;
+    const headerHeight = headerElement.offsetTop + headerElement.offsetHeight;
+
     const isSticky = () => {
-      const headerElement = document.querySelector("header") as HTMLDivElement;
-      const scrollTop = window.scrollY;
+      // console.log(headerElement.offsetTop, headerElement.offsetHeight, window.screenY);
       
-      scrollTop > 0 ? 
-        headerElement.classList.add(styles.header_scroll) 
+      const currentScrollPos = window.scrollY;
+      
+      prevScrollpos > currentScrollPos  || currentScrollPos < headerHeight ? 
+        headerElement.classList.remove(styles.header_scroll)
         :
-        headerElement.classList.remove(styles.header_scroll); 
+        headerElement.classList.add(styles.header_scroll);
+
+      prevScrollpos = currentScrollPos;
     };
 
     window.addEventListener("scroll", isSticky);
