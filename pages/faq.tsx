@@ -19,7 +19,7 @@ export const FAQ: NextPageWithLayout = () => {
         <MainBlock
           {...mainBlockProps}
           title='Мы составили список популярных вопросов, чтобы вам было проще'
-          video='/video/02.mov'
+          video='/video/02.mp4'
           buttonText={''}
           isMinSize
           date={undefined}

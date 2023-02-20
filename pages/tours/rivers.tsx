@@ -34,8 +34,8 @@ const Rivers: NextPageWithLayout = () => {
       <main className='page'>
         <MainBlock
           {...mainBlockProps}
-          title='SUP прогулки "Реки Подмосковья"' 
-          video='/video/02.mov'
+          title='SUP прогулки "Реки Подмосковья"'
+          video='/video/02.mp4'
           buttonText={'Связаться с нами'}
           date={undefined}
         />

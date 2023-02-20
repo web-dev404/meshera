@@ -9,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "playwright test",
+    "test:e2e:safari": "playwright test --headed --browser=webkit"
   },
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.2",
@@ -26,6 +28,7 @@
     "swiper": "^8.4.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "@types/eslint": "^8.4.10",
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",

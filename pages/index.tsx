@@ -44,7 +44,7 @@ const Home: NextPageWithLayout = () => {
       <main className='page'>
         <MainBlock
           {...mainBlockProps}
-          video='/video/02.mov'
+          video='/video/02.mp4'
           title='Мы провели десятки туров и корпоративов на различных акваториях.'
         />
         <Descriptions {...descriptionsProps} />
