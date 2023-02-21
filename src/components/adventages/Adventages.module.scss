@@ -25,9 +25,16 @@
   }
 
   &__adventage {
+    display: flex;
+    flex-direction: column;
     font-family: "VelaSans";
     letter-spacing: -0.035em;
     position: relative;
+    row-gap: 10px;
+
+    @media (min-width: 374.98px) {
+      row-gap: 15px;
+    }
 
     @media (min-width: 767.98px) {
       padding: 15px 30px 25px;
@@ -39,6 +46,8 @@
 
     @media (min-width: 1875px) {
       padding: 40px 35px 60px;
+
+      row-gap: 16px;
     }
 
     &::before,
@@ -139,16 +148,6 @@
     font-size: 26px;
     line-height: math.div(95, 90);
 
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-
-    @media (min-width: 374.98px) {
-      &:not(:last-child) {
-        margin-bottom: 15px;
-      }
-    }
-
     @media (min-width: 767.98px) {
       font-size: 32px;
     }
@@ -159,10 +158,6 @@
 
     @media (min-width: 1875px) {
       font-size: 90px;
-
-      &:not(:last-child) {
-        margin-bottom: 16px;
-      }
     }
   }
 
