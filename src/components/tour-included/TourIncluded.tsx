@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import htmlToReact from 'html-react-parser'
 import React from 'react'
 
@@ -42,16 +43,24 @@ export const TourIncluded: React.FC<ITourIncluded> = ({
       <div className={clsx(styles.include__header, styles.header)}>
         <div className={clsx(styles.header__container, 'container')}>
           <div className={styles.header__body}>
-            <h2
+            <motion.h2
+              initial={{ x: '-100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
               className={clsx(
                 styles.header__title,
                 'first-letter-fonts'
               )}
             >
               {title}
-            </h2>
+            </motion.h2>
             {!isMobile ? (
-              <button
+              <motion.button
+                initial={{ x: '-100%', opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
                 onClick={handleClickShowInfo}
                 type='button'
                 className={styles.header__show}
@@ -65,12 +74,16 @@ export const TourIncluded: React.FC<ITourIncluded> = ({
                     '_icon-angle-top'
                   )}
                 />
-              </button>
+              </motion.button>
             ) : null}
           </div>
         </div>
         {isMobile ? (
-          <button
+          <motion.button
+            initial={{ x: '-100%', opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
             onClick={handleClickShowInfo}
             type='button'
             className={styles.header__show}
@@ -81,7 +94,7 @@ export const TourIncluded: React.FC<ITourIncluded> = ({
             <span
               className={clsx(styles.header__icon, '_icon-angle-top')}
             />
-          </button>
+          </motion.button>
         ) : null}
       </div>
       <div className={styles.include__body}>
@@ -91,15 +104,22 @@ export const TourIncluded: React.FC<ITourIncluded> = ({
               [styles.include__content_full]: isProduct,
             })}
           >
-            {listOfTourInfos.map(tour => (
-              <article key={tour.id} className={styles.include__item}>
+            {listOfTourInfos.map((tour, index) => (
+              <motion.article
+                initial={{ x: `-${100 * index}%`, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                key={tour.id}
+                className={styles.include__item}
+              >
                 <h4 className={styles.include__title}>
                   {tour.title}
                 </h4>
                 <div className={styles.include__text}>
                   <p>{htmlToReact(tour.text)}</p>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -105,7 +106,11 @@ export const Header: React.FC<IHeader> = ({ className }) => {
   const handleMenuClick = () => setIsOpenMenu(prev => !prev)
 
   return (
-    <header className={clsx(styles.header, className)}>
+    <motion.header
+      initial={{ y: '-100%' }}
+      whileInView={{ y: '0' }}
+      className={clsx(styles.header, className)}
+    >
       <div className={clsx(styles.header__wrapper)}>
         <div className={clsx(styles.header__container, 'container')}>
           <nav className={clsx(styles.header__menu, styles.menu)}>
@@ -224,6 +229,6 @@ export const Header: React.FC<IHeader> = ({ className }) => {
           </nav>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }

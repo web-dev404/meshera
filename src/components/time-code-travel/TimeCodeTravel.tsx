@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import React from 'react'
 
 import {
@@ -21,8 +22,16 @@ export const TimeCodeTravel: React.FC<ITimeCodeTravel> = ({
     <section className={clsx(styles.time, className)}>
       <div className={clsx(styles.time__container, 'container')}>
         <div className={styles.time__body}>
-          {listOfCodeTravels.map(tour => (
-            <TimeCodeTravelItem {...tour} key={tour.idx} />
+          {listOfCodeTravels.map((tour, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: `${100}%` }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              key={tour.idx}
+            >
+              <TimeCodeTravelItem {...tour} />
+            </motion.div>
           ))}
         </div>
       </div>

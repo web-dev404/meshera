@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import React from 'react'
 
 import styles from './Adventages.module.scss'
@@ -27,9 +28,13 @@ export const Adventages: React.FC<IAdventages> = ({
         className={clsx(styles.adventages__container, 'container')}
       >
         <div className={styles.adventages__body}>
-          {listAdventageItems.map(obj => (
-            <div
+          {listAdventageItems.map((obj, index) => (
+            <motion.div
               key={obj.id}
+              initial={{ y: `${index * 100}`, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
               className={clsx(styles.adventages__adventage)}
             >
               {obj.stars?.length ? (
@@ -54,7 +59,7 @@ export const Adventages: React.FC<IAdventages> = ({
               <div className={styles.adventages__subtitle}>
                 {obj.subtitle}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -87,6 +92,6 @@ const defaultProps = {
   ],
 }
 
-export default defaultProps
-
 Adventages.defaultProps = defaultProps
+
+export default defaultProps

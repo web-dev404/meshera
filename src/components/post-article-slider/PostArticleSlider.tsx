@@ -1,17 +1,24 @@
-import React from "react";
-import clsx from "clsx";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper";
+import clsx from 'clsx'
+import { motion } from 'framer-motion'
+import React from 'react'
+import { Autoplay, Navigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-import SlideTourItem, { ISlideTourItem } from "@components/slide-tour-item/SlideTourItem";
+import SlideTourItem, {
+  ISlideTourItem,
+} from '@components/slide-tour-item/SlideTourItem'
 
-import styles from "./PostArticleSlider.module.scss";
-import "swiper/scss";
-interface IPostArticleSlider extends React.ComponentPropsWithoutRef<"section"> {
-  listOfArticles: ISlideTourItem[];
+import 'swiper/scss'
+import styles from './PostArticleSlider.module.scss'
+interface IPostArticleSlider
+  extends React.ComponentPropsWithoutRef<'section'> {
+  listOfArticles: ISlideTourItem[]
 }
 
-export const PostArticleSlider: React.FC<IPostArticleSlider> = ({ className, listOfArticles }) => {
+export const PostArticleSlider: React.FC<IPostArticleSlider> = ({
+  className,
+  listOfArticles,
+}) => {
   return (
     <section className={clsx(styles.article, className)}>
       <div className={styles.article__slider}>
@@ -19,11 +26,11 @@ export const PostArticleSlider: React.FC<IPostArticleSlider> = ({ className, lis
           modules={[Navigation, Autoplay]}
           observer
           observeParents
-          grabCursor 
+          grabCursor
           speed={800}
           navigation={{
-            prevEl: "." + styles.article__controll_left,
-            nextEl: "." + styles.article__controll_right,
+            prevEl: '.' + styles.article__controll_left,
+            nextEl: '.' + styles.article__controll_right,
           }}
           breakpoints={{
             320: {
@@ -36,20 +43,39 @@ export const PostArticleSlider: React.FC<IPostArticleSlider> = ({ className, lis
             991.98: {
               slidesPerView: 3,
               spaceBetween: 15,
-            }
+            },
           }}
         >
-          {
-            listOfArticles.map(article => (
-              <SwiperSlide key={article.id}>
+          {listOfArticles.map((article, index) => (
+            <SwiperSlide key={article.id}>
+              <motion.div
+                initial={{ opacity: 0, x: `-${100 * index}%` }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <SlideTourItem {...article} />
-              </SwiperSlide>
-            ))
-          }
+              </motion.div>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <div className={styles.article__controlls}>
-          <button type='button' className={clsx(styles.article__controll, styles.article__controll_left, "_icon-angle-top")} />
-          <button type='button' className={clsx(styles.article__controll, styles.article__controll_right, "_icon-angle-top")} />
+          <button
+            type='button'
+            className={clsx(
+              styles.article__controll,
+              styles.article__controll_left,
+              '_icon-angle-top'
+            )}
+          />
+          <button
+            type='button'
+            className={clsx(
+              styles.article__controll,
+              styles.article__controll_right,
+              '_icon-angle-top'
+            )}
+          />
         </div>
       </div>
     </section>
@@ -61,60 +87,66 @@ const defaultProps: IPostArticleSlider = {
     {
       id: 0,
       date: new Date(),
-      href: "/",
-      typeTrip: "Блог",
-      typeSlide: "Туризм",
-      title: "Походная баня – это специальная палатк. Походная баня – это специальная палатк.",
-      imageUrl: "/img/articles/01.jpg"
+      href: '/',
+      typeTrip: 'Блог',
+      typeSlide: 'Туризм',
+      title:
+        'Походная баня – это специальная палатк. Походная баня – это специальная палатк.',
+      imageUrl: '/img/articles/01.jpg',
     },
     {
       id: 1,
       date: new Date(),
-      href: "/",
-      typeTrip: "Блог",
-      typeSlide: "Туризм",
-      title: "Походная баня – это специальная палатк. Походная баня – это специальная палатк.",
-      imageUrl: "/img/articles/02.jpg"
+      href: '/',
+      typeTrip: 'Блог',
+      typeSlide: 'Туризм',
+      title:
+        'Походная баня – это специальная палатк. Походная баня – это специальная палатк.',
+      imageUrl: '/img/articles/02.jpg',
     },
     {
       id: 2,
       date: new Date(),
-      href: "/",
-      typeTrip: "Блог",
-      typeSlide: "Туризм",
-      title: "Походная баня – это специальная палатк. Походная баня – это специальная палатк.",
-      imageUrl: "/img/articles/03.jpg"
+      href: '/',
+      typeTrip: 'Блог',
+      typeSlide: 'Туризм',
+      title:
+        'Походная баня – это специальная палатк. Походная баня – это специальная палатк.',
+      imageUrl: '/img/articles/03.jpg',
     },
     {
       id: 3,
       date: new Date(),
-      href: "/",
-      typeTrip: "Блог",
-      typeSlide: "Туризм",
-      title: "Походная баня – это специальная палатк. Походная баня – это специальная палатк.",
-      imageUrl: "/img/articles/01.jpg"
+      href: '/',
+      typeTrip: 'Блог',
+      typeSlide: 'Туризм',
+      title:
+        'Походная баня – это специальная палатк. Походная баня – это специальная палатк.',
+      imageUrl: '/img/articles/01.jpg',
     },
     {
       id: 4,
       date: new Date(),
-      href: "/",
-      typeTrip: "Блог",
-      typeSlide: "Туризм",
-      title: "Походная баня – это специальная палатк. Походная баня – это специальная палатк.",
-      imageUrl: "/img/articles/02.jpg"
+      href: '/',
+      typeTrip: 'Блог',
+      typeSlide: 'Туризм',
+      title:
+        'Походная баня – это специальная палатк. Походная баня – это специальная палатк.',
+      imageUrl: '/img/articles/02.jpg',
     },
     {
       id: 5,
       date: new Date(),
-      href: "/",
-      typeTrip: "Блог",
-      typeSlide: "Туризм",
-      title: "Походная баня – это специальная палатк. Походная баня – это специальная палатк.",
-      imageUrl: "/img/articles/03.jpg"
+      href: '/',
+      typeTrip: 'Блог',
+      typeSlide: 'Туризм',
+      title:
+        'Походная баня – это специальная палатк. Походная баня – это специальная палатк.',
+      imageUrl: '/img/articles/03.jpg',
     },
   ],
 }
 
-PostArticleSlider.defaultProps = defaultProps;
+PostArticleSlider.defaultProps = defaultProps
 
-export default defaultProps;
+export default defaultProps

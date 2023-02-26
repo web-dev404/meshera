@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
@@ -17,7 +18,11 @@ export const Banner: React.FC<IBanner> = ({
   className,
 }) => {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.25 }}
+      viewport={{ once: true }}
       className={clsx(
         styles.banner,
         { [styles.banner_deviceSize]: isDeviceSize },
@@ -28,7 +33,7 @@ export const Banner: React.FC<IBanner> = ({
       <div className={styles.banner__image}>
         <Image src={imageUrl} fill alt='Lake with forest' />
       </div>
-    </section>
+    </motion.section>
   )
 }
 

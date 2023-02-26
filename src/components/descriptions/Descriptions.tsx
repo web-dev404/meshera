@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import clsx from "clsx";
 import htmlToReact from "html-react-parser"
 
@@ -26,15 +27,29 @@ export const Descriptions: React.FC<IDescriptions> = ({ className, listOfDescrip
                   <div className={styles.descriptions__titleBlock}>
                     {
                       obj.title ? 
-                      <h4 className={styles.descriptions__title}>{obj.title}</h4>
-                      :
-                      null
+                        <motion.h4 
+                          initial={{ x: '-100%', opacity: 0 }}
+                          whileInView={{ x: 0, opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, ease: "easeOut" }}
+                          className={styles.descriptions__title}
+                        >
+                          {obj.title}
+                        </motion.h4>
+                        :
+                        null
                     }
                   </div>
                   <div className={styles.descriptions__text}>
-                    <p className='text'>
+                    <motion.p
+                      initial={{ x: '-100%', opacity: 0 }}
+                      whileInView={{ x: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
+                      className='text'
+                    >
                       {htmlToReact(obj.text)}
-                    </p>
+                    </motion.p>
                   </div>
                 </article>
               )

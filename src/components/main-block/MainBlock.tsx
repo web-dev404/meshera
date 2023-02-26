@@ -1,5 +1,6 @@
-import { LinkPrimary } from '@components/UI/Links'
+import { MotionLinkPrimary } from '@components/UI/Links/LinkPrimary'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
@@ -36,22 +37,46 @@ export const MainBlock: React.FC<IMainBlock> = ({
           })}
         >
           <div className={styles.main__content}>
-            <h1 className={clsx(styles.main__title, 'title')}>
+            <motion.h1
+              whileInView={{ y: 0, opacity: 1 }}
+              initial={{ y: '100%', opacity: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.4,
+                duration: 0.4,
+                ease: 'easeOut',
+              }}
+              className={clsx(styles.main__title, 'title')}
+            >
               {title}
-            </h1>
+            </motion.h1>
             {buttonText ? (
-              <LinkPrimary
+              <MotionLinkPrimary
                 href={href}
                 label={buttonText}
                 className={styles.main__link}
+                whileInView={{ y: 0, opacity: 1 }}
+                initial={{ y: '100%', opacity: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.6,
+                  duration: 0.4,
+                  ease: 'easeOut',
+                }}
               />
             ) : null}
           </div>
           {date ? (
-            <div className={styles.main__date}>
+            <motion.div
+              initial={{ x: '100%', opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className={styles.main__date}
+            >
               <div className={styles.main__value}>{date?.from}</div>
               <div className={styles.main__value}>{date?.to}</div>
-            </div>
+            </motion.div>
           ) : null}
         </div>
       </div>

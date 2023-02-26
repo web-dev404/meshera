@@ -1,8 +1,9 @@
-import React from 'react'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
+import React from 'react'
 
-import styles from './faq-item.module.scss'
 import { Collapse } from 'react-collapse'
+import styles from './faq-item.module.scss'
 
 export interface IFAQItem
   extends React.ComponentPropsWithoutRef<'section'> {
@@ -22,13 +23,20 @@ export const FAQItem: React.FC<IFAQItem> = ({
 
   const handleClickShow = () => setIsShowFAQ(prev => !prev)
 
-  const collapseClasses = React.useMemo(() => ({
-    collapse: styles.faq__hidden_collapsing,
-    content: styles.faq__hidden,
-  }), []);
+  const collapseClasses = React.useMemo(
+    () => ({
+      collapse: styles.faq__hidden_collapsing,
+      content: styles.faq__hidden,
+    }),
+    []
+  )
 
   return (
-    <article
+    <motion.article
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.2 }}
       className={clsx(styles.faq, className, {
         [styles.faq_show]: isShowFAQ,
       })}
@@ -40,11 +48,15 @@ export const FAQItem: React.FC<IFAQItem> = ({
       >
         <span>{name}</span>
       </button>
-      <Collapse className={styles.faq__hidden} theme={collapseClasses} isOpened={isShowFAQ}>
+      <Collapse
+        className={styles.faq__hidden}
+        theme={collapseClasses}
+        isOpened={isShowFAQ}
+      >
         {texts.map((text, _id) => (
           <p key={_id}>{text}</p>
         ))}
       </Collapse>
-    </article>
+    </motion.article>
   )
 }

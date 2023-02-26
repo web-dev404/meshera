@@ -55,7 +55,7 @@
   }
 
   &_scroll {
-    transform: translate3d(0px, -100%, 0px);
+    transform: translate3d(0px, -100%, 0px) !important;
     background-color: transparent;
   }
 
