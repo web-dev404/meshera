@@ -37,7 +37,7 @@ export const Footer: React.FC<IFooter> = ({ className }) => {
                     <Link href={'/'}>Туры</Link>
                   </li>
                   <li className={styles.footer__item}>
-                    <Link href={'/'}>Блог</Link>
+                    <Link href={'/articles/1'}>Блог</Link>
                   </li>
                 </ul>
               </div>
