@@ -25,7 +25,7 @@ export const ListHouses: React.FC<IListHouses> = ({
   listOfHouses,
 }) => {
   return (
-    <section className={clsx(styles.houses, className)}>
+    <section className={clsx(styles.houses, className)} id='listhouses'>
       <div className={clsx(styles.houses__container, 'container')}>
         <div className={styles.houses__body}>
           {listOfHouses.map((house, index) => (

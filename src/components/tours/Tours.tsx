@@ -19,7 +19,7 @@ interface ITours extends React.ComponentPropsWithoutRef<'section'> {
 
 export const Tours: React.FC<ITours> = ({ className, listTours }) => {
   return (
-    <section className={clsx(styles.tours, className)}>
+    <section className={clsx(styles.tours, className)} id='tours'>
       <div className={clsx(styles.tours__container, 'container')}>
         <div className={styles.tours__body}>
           {listTours.map((tour, index) => (
@@ -64,19 +64,19 @@ const defaultProps = {
     {
       id: 0,
       title: 'Тур “Новогодний”',
-      href: '/',
+      href: '/tours/newyear',
       imageUrl: '/img/tours/01.jpg',
     },
     {
       id: 1,
       title: 'Тур “Зимние выходные”',
-      href: '/',
+      href: '/tours/weekend',
       imageUrl: '/img/tours/02.jpg',
     },
     {
       id: 2,
-      title: 'Тур “Зимние выходные”',
-      href: '/',
+      title: 'Тур прогулки "Реки Подмосковья"',
+      href: '/tours/rivers',
       imageUrl: '/img/tours/03.jpg',
     },
   ],

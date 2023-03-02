@@ -124,7 +124,7 @@ export const Header: React.FC<IHeader> = ({ className }) => {
                   </li>
                   <li className={styles.menu__item}>
                     <Link
-                      href='/tours/newyear'
+                      href='#tours'
                       className={styles.menu__link}
                     >
                       Туры
@@ -132,7 +132,7 @@ export const Header: React.FC<IHeader> = ({ className }) => {
                   </li>
                   <li className={styles.menu__item}>
                     <Link
-                      href='/tours/rivers'
+                      href='#listhouses'
                       className={styles.menu__link}
                     >
                       Баня

@@ -96,7 +96,7 @@ const defaultProps: IMainBlock = {
     'Мы провели десятки туров и корпоративов на различных акваториях.',
   buttonText: 'Посмотреть туры',
   mainImageUrl: '/img/main-block/01.jpg',
-  href: '/',
+  href: '#tours',
 }
 
 MainBlock.defaultProps = defaultProps

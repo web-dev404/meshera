@@ -117,7 +117,7 @@ const defaultProps: ISliderTours = {
       title:
         'Походная баня – это специальная палатк. Походная баня – это специальная палатк',
       imageUrl: '/img/banners/02.jpg',
-      href: '/',
+      href: '/articles/1',
       typeSlide: 'Блог',
       typeTrip: 'Туризм',
     },
@@ -127,7 +127,7 @@ const defaultProps: ISliderTours = {
       title:
         'Походная баня – это специальная палатк. Походная баня – это специальная палатк',
       imageUrl: '/img/banners/02.jpg',
-      href: '/',
+      href: '/articles/1',
       typeSlide: 'Блог',
       typeTrip: 'Туризм',
     },
@@ -137,7 +137,7 @@ const defaultProps: ISliderTours = {
       title:
         'Походная баня – это специальная палатк. Походная баня – это специальная палатк',
       imageUrl: '/img/banners/02.jpg',
-      href: '/',
+      href: '/articles/1',
       typeSlide: 'Блог',
       typeTrip: 'Туризм',
     },
@@ -147,7 +147,7 @@ const defaultProps: ISliderTours = {
       title:
         'Походная баня – это специальная палатк. Походная баня – это специальная палатк',
       imageUrl: '/img/banners/02.jpg',
-      href: '/',
+      href: '/articles/1',
       typeSlide: 'Блог',
       typeTrip: 'Туризм',
     },
